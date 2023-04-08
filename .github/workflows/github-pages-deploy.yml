@@ -16,7 +16,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
-    - run: npm run build-storybook --workspace storybook-app
     - run: npm i -g gh-pages
     - run: git config user.name github-action
     - run: git config user.email github-actions@github.com
