@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet">
 
 <!-- Scrollable a11y code helper -->
-<script src="/make-scrollable-code-focusable.js"></script>
+<script src="/the-ui-dawg-static-site//make-scrollable-code-focusable.js"></script>
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script>
@@ -81,7 +81,7 @@
     </div>
     <div class="logo flex astro-2W66RQV5">
       <a href="/" class="astro-2W66RQV5">
-        <img src="/logo.png" style="width:40px" class="astro-2W66RQV5">
+        <img src="/the-ui-dawg-static-site//logo.png" style="width:40px" class="astro-2W66RQV5">
         <h1 class="astro-2W66RQV5">The UI Dawg</h1>
       </a>
     </div>
@@ -101,7 +101,7 @@
             <h2 class="nav-group-title astro-KQNE5HRN">Overview</h2>
             <ul class="astro-KQNE5HRN">
               <li class="nav-link astro-KQNE5HRN">
-                    <a href="/en/introduction" class="astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/introduction" class="astro-KQNE5HRN">
                       Introduction
                     </a>
                   </li>
@@ -112,11 +112,11 @@
             <h2 class="nav-group-title astro-KQNE5HRN">Blog Posts</h2>
             <ul class="astro-KQNE5HRN">
               <li class="nav-link astro-KQNE5HRN">
-                    <a href="/en/reusing-components" class="astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/reusing-components" class="astro-KQNE5HRN">
                       Reusing Components Across Frameworks
                     </a>
                   </li><li class="nav-link astro-KQNE5HRN">
-                    <a href="/en/devcontainers" class="astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/devcontainers" class="astro-KQNE5HRN">
                       Containerizing Development with VS Code Dev Containers
                     </a>
                   </li>
@@ -171,23 +171,23 @@
 <span class="line"><span style="color: #C9D1D9">  );</span></span>
 <span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
 <p>While this approach works, it can lock your apps into consuming two different UI packages that achieve similar results. Additionally, developers need to know how to write Vue and React components and how to integrate them, which adds complexity to the project.</p>
-<img src="/reusing-components/react-and-vue.png">
+<p>&#x3C;img src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/react-and-vue.png</code>} /></p>
 <h2 id="2-write-components-as-web-components">2. Write Components as Web Components</h2>
 <p>The second option is to write your shared components as web components. <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web components</a> are a set of browser features that allow you to create reusable components independent of any frameworks or libraries. You can write your component once in a framework like <a href="https://stenciljs.com/">Stencil</a> and build components that can be used in Vue, React, Angular, or vanilla javascript.</p>
-<img src="/reusing-components/stencil.png">
+<p>&#x3C;img src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/stencil.png</code>} /></p>
 <p>However, web components are not fully compatible with popular frameworks like Vue and React, so you may have issues using complex data types or adding event handlers. Additionally, developers still need to know how to use multiple component building frameworks.</p>
 <p><a href="https://custom-elements-everywhere.com/">See custom-elements-everywhere.com</a> for more information on web component compatibility.</p>
-<img src="/reusing-components/custom-elements.png">
+<p>&#x3C;img src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/custom-elements.png</code>}></p>
 <h2 id="3-components-as-micro-frontends">3. Components as Micro-Frontends</h2>
 <p>The third option is to structure your page as components that can live as their own micro-frontends. With this approach, you might have a single Next.js application responsible for the header, a Vue app that’s responsible for your homepage, and a Svelte app responsible for the footer. Then, an additional service is responsible for grabbing each of the components and merging them into a single page before returning it to users. This option can be beneficial for large organizations as it allows teams to own specific parts of a page independently of other teams’ workloads. However, this approach comes with the added complexity of managing bundle splitting and global state management of components that operate independently of each other. Even if your servers all live in the same place, you may also lose some performance due to transaction timing.</p>
-<img src="/reusing-components/micro-frontends.png">
+<p>&#x3C;img src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/micro-frontends.png</code>} /></p>
 <p>Additionally, giving so much flexibility to engineers can discourage code sharing because every team may be using their own libraries and design patterns.</p>
-<img class="split-desktop-image" src="/reusing-components/sharing-multiple-frameworks-1.png">
-<img class="split-desktop-image" src="/reusing-components/sharing-multiple-frameworks-2.jpg">
+<p>&#x3C;img class=“split-desktop-image” src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/sharing-multiple-frameworks-1.png</code>} />
+&#x3C;img class=“split-desktop-image” src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/sharing-multiple-frameworks-2.jpg</code>} /></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In conclusion, there is no perfect solution for reusing code across different frameworks. Each approach has its pros and cons, and organizations need to weigh them before making a decision.</p>
 <p>Alternatively, instead of adding the complexity of supporting multiple frameworks, you may want to consider migrating your code away from technologies that are tightly coupled to individual frameworks and instead use technologies that are interoperable cross-framework, like vanilla html, css, and javascript. That way, instead of supporting multiple frameworks, you can transition to new frameworks much faster.</p>
-<img src="/reusing-components/vanillajs.png">
+<p>&#x3C;img src={<code>${import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL}/reusing-components/vanillajs.png</code>} /></p>
 <p>I hope this blog post was helpful in providing you with some options for reusing your components across multiple frameworks. Happy coding!</p>
 
         
