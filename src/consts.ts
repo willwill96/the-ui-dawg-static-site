@@ -1,44 +1,51 @@
 export const SITE = {
-	title: 'Documentation',
-	description: 'Your website description.',
-	defaultLanguage: 'en-us',
+  title: "The UI Dawg",
+  description: "Your website description.",
+  defaultLanguage: "en-us",
 } as const;
 
 export const OPEN_GRAPH = {
-	image: {
-		src: 'https://github.com/withastro/astro/blob/main/.github/assets/banner.png?raw=true',
-		alt:
-			'astro logo on a starry expanse of space,' +
-			' with a purple saturn-like planet floating in the right foreground',
-	},
-	twitter: 'astrodotbuild',
+  image: {
+    src: "https://github.com/withastro/astro/blob/main/.github/assets/banner.png?raw=true",
+    alt:
+      "astro logo on a starry expanse of space," +
+      " with a purple saturn-like planet floating in the right foreground",
+  },
+  twitter: "astrodotbuild",
 };
 
 export const KNOWN_LANGUAGES = {
-	English: 'en',
+  English: "en",
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/withastro/astro/tree/main/examples/docs`;
+export const GITHUB_EDIT_URL = `https://github.com/willwill96/the-ui-dawg-static-site/tree/main`;
 
 export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
-	indexName: 'XXXXXXXXXX',
-	appId: 'XXXXXXXXXX',
-	apiKey: 'XXXXXXXXXX',
+  indexName: "XXXXXXXXXX",
+  appId: "XXXXXXXXXX",
+  apiKey: "XXXXXXXXXX",
 };
 
 export type Sidebar = Record<
-	(typeof KNOWN_LANGUAGE_CODES)[number],
-	Record<string, { text: string; link: string }[]>
+  (typeof KNOWN_LANGUAGE_CODES)[number],
+  Record<string, { text: string; link: string }[]>
 >;
 export const SIDEBAR: Sidebar = {
-	en: {
-		'Section Header': [
-			{ text: 'Introduction', link: 'en/introduction' },
-		],
-		'Blog Posts': [{ text: 'Page 4', link: 'en/page-4' }],
-	},
+  en: {
+    Overview: [{ text: "Introduction", link: "en/introduction" }],
+    "Blog Posts": [
+      {
+        text: "Reusing Components Across Frameworks",
+        link: "en/reusing-components",
+      },
+      {
+        text: "Containerizing Development with VS Code Dev Containers",
+        link: "en/devcontainers",
+      },
+    ],
+  },
 };

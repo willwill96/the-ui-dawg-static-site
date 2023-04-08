@@ -1,0 +1,74 @@
+---
+title: "Reusing Components Across Frameworks"
+description: "Discussing Cross-Framework Integration Techniques"
+---
+
+Prefer video format? [See the youtube video instead](https://www.youtube.com/watch?v=XLPwT0lZjIE)
+
+In the world of front-end development, new JavaScript frameworks are constantly emerging and evolving. As a developer, you may have just finished migrating your application from one framework to another, only to find out that a new version of your previous framework has been released with exciting new features. Wouldn't it be nice if you could write your components once and reuse them across multiple frameworks? In this blog post, we will explore ways to achieve this goal, regardless of the specific framework you are currently using.
+
+## 1. Cross Framework Integration Libraries
+
+The first option is to use an integration library like [Veaury](https://github.com/devilwjp/veaury). This library allows you to nest components bidirectionally, which means that you can have a Vue component inside of React or a React component inside of Vue component. For example, from the Veaury docs:
+
+```tsx
+// Vue in React
+import { applyVueInReact, applyPureVueInReact } from "veaury";
+// This is a Vue component
+import BasicVueComponent from "./Basic.vue";
+import { useState } from "react";
+// Use HOC 'applyVueInReact'
+const BasicWithNormal = applyVueInReact(BasicVueComponent);
+// Use HOC 'applyPureVueInReact'
+const BasicWithPure = applyPureVueInReact(BasicVueComponent);
+export default function () {
+  const [foo] = useState("Hello!");
+  return (
+    <>
+      <BasicWithNormal foo={foo}>
+        <div>the default slot</div>
+      </BasicWithNormal>
+      <BasicWithPure foo={foo}>
+        <div>the default slot</div>
+      </BasicWithPure>
+    </>
+  );
+}
+```
+
+While this approach works, it can lock your apps into consuming two different UI packages that achieve similar results. Additionally, developers need to know how to write Vue and React components and how to integrate them, which adds complexity to the project.
+
+<img src="/reusing-components/react-and-vue.png" />
+
+## 2. Write Components as Web Components
+
+The second option is to write your shared components as web components. [Web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) are a set of browser features that allow you to create reusable components independent of any frameworks or libraries. You can write your component once in a framework like [Stencil](https://stenciljs.com/) and build components that can be used in Vue, React, Angular, or vanilla javascript.
+
+<img src="/reusing-components/stencil.png" />
+
+However, web components are not fully compatible with popular frameworks like Vue and React, so you may have issues using complex data types or adding event handlers. Additionally, developers still need to know how to use multiple component building frameworks.
+
+[See custom-elements-everywhere.com](https://custom-elements-everywhere.com/) for more information on web component compatibility.
+
+<img src="/reusing-components/custom-elements.png">
+
+## 3. Components as Micro-Frontends
+
+The third option is to structure your page as components that can live as their own micro-frontends. With this approach, you might have a single Next.js application responsible for the header, a Vue app that’s responsible for your homepage, and a Svelte app responsible for the footer. Then, an additional service is responsible for grabbing each of the components and merging them into a single page before returning it to users. This option can be beneficial for large organizations as it allows teams to own specific parts of a page independently of other teams’ workloads. However, this approach comes with the added complexity of managing bundle splitting and global state management of components that operate independently of each other. Even if your servers all live in the same place, you may also lose some performance due to transaction timing.
+
+<img src="/reusing-components/micro-frontends.png" />
+
+Additionally, giving so much flexibility to engineers can discourage code sharing because every team may be using their own libraries and design patterns.
+
+<img class="split-desktop-image"  src="/reusing-components/sharing-multiple-frameworks-1.png" />
+<img class="split-desktop-image"  src="/reusing-components/sharing-multiple-frameworks-2.jpg" />
+
+## Conclusion
+
+In conclusion, there is no perfect solution for reusing code across different frameworks. Each approach has its pros and cons, and organizations need to weigh them before making a decision.
+
+Alternatively, instead of adding the complexity of supporting multiple frameworks, you may want to consider migrating your code away from technologies that are tightly coupled to individual frameworks and instead use technologies that are interoperable cross-framework, like vanilla html, css, and javascript. That way, instead of supporting multiple frameworks, you can transition to new frameworks much faster.
+
+<img src="/reusing-components/vanillajs.png" />
+
+I hope this blog post was helpful in providing you with some options for reusing your components across multiple frameworks. Happy coding!
