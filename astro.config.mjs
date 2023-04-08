@@ -2,8 +2,6 @@ import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
 import react from "@astrojs/react";
 
-const { PUBLIC_SITE_DOMAIN, PUBLIC_BASE_URL } = process.env;
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
