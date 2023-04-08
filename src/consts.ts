@@ -36,15 +36,20 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
   en: {
-    Overview: [{ text: "Introduction", link: "en/introduction" }],
+    Overview: [
+      {
+        text: "Introduction",
+        link: `${import.meta.env.BASE_URL}en/introduction`,
+      },
+    ],
     "Blog Posts": [
       {
         text: "Reusing Components Across Frameworks",
-        link: "en/reusing-components",
+        link: `${import.meta.env.BASE_URL}en/reusing-components`,
       },
       {
         text: "Containerizing Development with VS Code Dev Containers",
-        link: "en/devcontainers",
+        link: `${import.meta.env.BASE_URL}en/devcontainers`,
       },
     ],
   },
