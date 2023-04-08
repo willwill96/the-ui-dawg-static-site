@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
 import react from "@astrojs/react";
-import { defineConfig } from "astro/config";
 
 const { PUBLIC_SITE_DOMAIN, PUBLIC_BASE_URL } = process.env;
 
