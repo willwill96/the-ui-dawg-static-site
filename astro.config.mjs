@@ -1,6 +1,9 @@
 import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
 import react from "@astrojs/react";
+import { defineConfig } from "astro/config";
+
+const { PUBLIC_SITE_DOMAIN, PUBLIC_BASE_URL } = process.env;
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,5 +13,6 @@ export default defineConfig({
     // Enable React for the Algolia search component.
     react(),
   ],
-  site: `https://astro.build`,
+  site: `https://willwill96.github.io`,
+  base: `/the-ui-dawg-static-site`
 });
