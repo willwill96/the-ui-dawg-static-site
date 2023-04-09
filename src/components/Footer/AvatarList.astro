@@ -3,7 +3,10 @@
 type Props = {
   path: string;
 };
-const { path } = Astro.props;
+let { path } = Astro.props;
+if (import.meta.env.BASE_URL) {
+  path = path.replace(import.meta.env.BASE_URL, '/')
+}
 const resolvedPath = `${path}`;
 const url = `https://api.github.com/repos/willwill96/the-ui-dawg-static-site/commits?path=${resolvedPath}`;
 const commitsURL = `https://github.com/willwill96/the-ui-dawg-static-site/commits/main/${resolvedPath}`;
