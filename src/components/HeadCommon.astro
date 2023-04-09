@@ -1,6 +1,9 @@
 ---
 import "../styles/theme.css";
 import "../styles/index.css";
+import { convertToBaseUrl } from "../utils/base-url";
+
+const faviconUrl = convertToBaseUrl('/favicon.png')
 ---
 
 <!-- Global Metadata -->
@@ -8,7 +11,7 @@ import "../styles/index.css";
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 
-<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+<link rel="icon" type="image/svg+xml" href={faviconUrl} />
 
 <link rel="sitemap" href="/sitemap.xml" />
 
