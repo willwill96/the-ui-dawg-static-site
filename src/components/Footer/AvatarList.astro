@@ -1,13 +1,12 @@
 ---
+import { removeBaseUrl } from "../../utils/base-url";
+
 // fetch all commits for just this page's path
 type Props = {
   path: string;
 };
-let { path } = Astro.props;
-if (import.meta.env.BASE_URL) {
-  path = path.replace(import.meta.env.BASE_URL, '/')
-}
-const resolvedPath = `${path}`;
+const { path } = Astro.props;
+const resolvedPath = removeBaseUrl(path);
 const url = `https://api.github.com/repos/willwill96/the-ui-dawg-static-site/commits?path=${resolvedPath}`;
 const commitsURL = `https://github.com/willwill96/the-ui-dawg-static-site/commits/main/${resolvedPath}`;
 

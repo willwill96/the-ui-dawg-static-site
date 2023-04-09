@@ -1,24 +1,19 @@
 ---
 import { getLanguageFromURL } from "../../languages";
 import { SIDEBAR } from "../../consts";
+import { convertToBaseUrl } from "../../utils/base-url";
 
 type Props = {
   currentPage: string;
 };
 
 const { currentPage } = Astro.props;
-const handleBaseUrl = (value: string) => {
-  if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
-    return `/${value}`
-  }
-  return value
-}
-const currentPageMatch = handleBaseUrl((currentPage.endsWith("/")
-  ? currentPage.slice(1, -1)
-  : currentPage.slice(1)));
+
+const currentPageMatch = convertToBaseUrl(
+  currentPage.endsWith("/") ? currentPage.slice(1, -1) : currentPage.slice(1)
+);
 const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
-
 ---
 
 <nav aria-labelledby="grid-left">

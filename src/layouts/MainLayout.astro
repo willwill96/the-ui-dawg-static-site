@@ -9,6 +9,7 @@ import LeftSidebar from "../components/LeftSidebar/LeftSidebar.astro";
 import RightSidebar from "../components/RightSidebar/RightSidebar.astro";
 import Footer from "../components/Footer/Footer.astro";
 import { GITHUB_EDIT_URL, SITE } from "../consts";
+import { removeBaseUrl } from "../utils/base-url";
 
 type Props = CollectionEntry<"docs">["data"] & {
   headings: MarkdownHeading[];
@@ -17,7 +18,10 @@ type Props = CollectionEntry<"docs">["data"] & {
 const { headings, ...data } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
-const currentFile = `src/content/docs${currentPage.replace(/\/$/, "")}.md`;
+
+const currentFile = removeBaseUrl(
+  `src/content/docs${currentPage.replace(/\/$/, "")}.mdx`
+);
 const githubEditUrl = `${GITHUB_EDIT_URL}/${currentFile}`;
 ---
 
