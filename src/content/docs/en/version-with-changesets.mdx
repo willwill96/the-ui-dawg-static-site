@@ -1,0 +1,164 @@
+---
+title: "Version Your Packages With Changesets"
+description: "Introduction to Changesets"
+---
+
+Prefer video format? [See the youtube video instead](https://www.youtube.com/watch?v=vO80X5zM8_Y)
+
+[Changesets](https://github.com/changesets/changesets) is "a tool to manage versioning and changelogs
+with a focus on multi-package repositories."
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/version-with-changesets/changesets-banner.png`}
+/>
+
+There are other approaches to versioning the packages in your mono-repo like using [intuit's auto](https://intuit.github.io/auto/docs), [microsoft's beachball](https://microsoft.github.io/beachball/overview/getting-started.html), or [lerna & conventional commits](https://lerna.js.org/docs/getting-started), but I've found that Changesets offers the least opinionated and most customizable set of features.
+
+Before getting into the features of changesets, I'd like point out that not every app or organization needs to version their packages. In a lot of cases, adding the ability to version your packages, is an extra complexity that will just add bloat.
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/version-with-changesets/versioning-packages.png`}
+/>
+
+A couple reasons you might want to add versioning to your repo are:
+
+1. Open sourcing your package(s) and publishing to a public npm registry
+2. Your infrastructure has reached a point where it no longer makes sense to put all of your code in a single mono-repo
+
+## Installation
+
+Now that you've decided you want to version your packages, let's take a look at changesets.
+
+To get started open your project, and run the following to get started:
+
+```sh
+# Install changesets cli as a dev dependency
+npm install -D @changesets/cli
+# Initialize changesets
+npx changeset init
+```
+
+This should create a file, `.changeset/config.json` with some boilerplate config.
+
+## General Usage
+
+To version a package, run:
+
+```sh
+npx changeset
+```
+
+This will pick up all of the package.json files referenced as workspaces within your project, and prompt you for which ones need a version bump and a description of the change:
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/version-with-changesets/run-changeset.png`}
+/>
+
+Once finished, this command generates what's known as a changeset, which is just a markdown file containing human and machine readable metadata about the versions that will be updated. For example:
+
+```md
+# .changesets/gold-forks-return.md
+
+---
+
+## "package-a": minor
+
+Add a new feature
+```
+
+Next optionally run the following to see what changes will be published as part of the next release:
+
+```sh
+npx changeset status --verbose
+```
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/version-with-changesets/changeset-status.png`}
+/>
+
+Once ready to version your packages, run:
+
+```sh
+npx changeset version
+```
+
+This will remove all changeset files you currently have and translate them to package version and changelog updates.
+
+Note: The changesets CLI will automatically update any interdependent package versions based on their sem-versioning ranges:
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/version-with-changesets/update-interdependent.png`}
+/>
+
+Finally, commit your changes, build your packages if necessary, and run:
+
+```sh
+ npx changeset publish
+```
+
+This command will publish your code to npm and create git tags for each of the new packages.
+
+Note: You'll need to run the following to have the git tags pushed up to your remote:
+
+```
+git push --follow-tags
+```
+
+## Customizations
+
+### Fixed Option
+
+You can add a “fixed” option to your config for any packages you always want versioned together.
+For example, A version bump to `package-a` implies a version bump to `package-b` and vice versa:
+
+```json
+// .changesets/config.json
+{
+  "fixed": [["package-a", "package-b"]]
+}
+```
+
+### Snapshots
+
+Snapshots versions can be very helpful, for example for creating canary releases. To version your packages as a snapshot version run:
+
+```sh
+npx changeset version --snapshot
+```
+
+Note: Remember, the `version` command only translates changesets into package version updates. You might need to run the publish command as well if you want to publish your changes. To avoid creating git tags as part of the publish, run:
+
+```sh
+npx changeset publish --no-git-tag
+```
+
+### Limiting Scope of Changesets
+
+For packages you don't want published to an npm registry, add `“private: true”` to the relevant package.json.
+
+And for packages you don't want versioned, omit the version field in your package.json.
+
+## Closing Thoughts
+
+This wasn't an entirely inclusive list of all of the features of changesets, but hopefully this gives you a good idea of how customizable your versioning scheme can be with changesets.
+
+The workflow you choose with changesets is also extremely customizable due to the phased approach it takes where you first create a changeset, then version your packages and finally publish the changed packages. Each step is its own independent step which is only loosely coupled to the overall changesets lifecycle. So if you want to automate the creation of changesets, you can easily replace that step. If you want your own custom publish process, you
+can do that too.
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/version-with-changesets/phased-approach.png`}
+/>
+
+If you've been looking for a highly customizable tool for versioning your components, changesets is the answer. Hope you enjoyed this article, happy coding!

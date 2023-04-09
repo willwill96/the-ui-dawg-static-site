@@ -21,7 +21,6 @@ export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
 export const GITHUB_EDIT_URL = `https://github.com/willwill96/the-ui-dawg-static-site/edit/main`;
 
-
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
   indexName: "XXXXXXXXXX",
@@ -49,6 +48,10 @@ export const SIDEBAR: Sidebar = {
       {
         text: "Containerizing Development with VS Code Dev Containers",
         link: `${import.meta.env.BASE_URL}en/devcontainers`,
+      },
+      {
+        text: "Version Your Packages with Changesets",
+        link: `${import.meta.env.BASE_URL}en/version-with-changesets`,
       },
     ],
   },
