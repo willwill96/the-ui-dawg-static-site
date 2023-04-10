@@ -2,6 +2,7 @@
 title: "Comparing npm packages"
 description: "A guide to comparing npm packages"
 ---
+import {convertToBaseUrl} from '../../../utils/base-url'
 
 Javascript development is constantly changing and it seems like there is always a new package being released. With so many packages available, it can be overwhelming to decide which one to use for your project.
 
@@ -21,9 +22,7 @@ Next, I recommend simply googling the options and a comparison. Take advantage o
 Next, I recommend comparing the packages using online tools. The first tool I recommend is [npmtrends.com](https://npmtrends.com/). This allows you to plot downloads over time to give you an idea of how the popularity of a given package has changed over time and how it's trending now. For example, for a framework comparison: 
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/comparing-npm-packages/npm-trends.png`}
+  src={convertToBaseUrl('comparing-npm-packages/npm-trends.png')}
 />
 
 The second tool I recommend is npmcompare.com. This tool doesn't give you as much of a historical perspective, but it does have some metrics that I find can be useful in your decision. 

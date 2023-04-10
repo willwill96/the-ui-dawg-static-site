@@ -2,6 +2,7 @@
 title: "Version Your Packages with Changesets"
 description: "Introduction to Changesets"
 ---
+import {convertToBaseUrl} from '../../../utils/base-url'
 
 Prefer video format? [See the youtube video instead](https://www.youtube.com/watch?v=vO80X5zM8_Y)
 
@@ -9,9 +10,7 @@ Prefer video format? [See the youtube video instead](https://www.youtube.com/wat
 with a focus on multi-package repositories."
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/version-with-changesets/changesets-banner.png`}
+  src={convertToBaseUrl('version-with-changesets/changesets-banner.png')}
 />
 
 There are other approaches to versioning the packages in your mono-repo like using [intuit's auto](https://intuit.github.io/auto/docs), [microsoft's beachball](https://microsoft.github.io/beachball/overview/getting-started.html), or [lerna & conventional commits](https://lerna.js.org/docs/getting-started), but I've found that Changesets offers the least opinionated and most customizable set of features.
@@ -19,9 +18,7 @@ There are other approaches to versioning the packages in your mono-repo like usi
 Before getting into the features of changesets, I'd like point out that not every app or organization needs to version their packages. In a lot of cases, adding the ability to version your packages, is an extra complexity that will just add bloat.
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/version-with-changesets/versioning-packages.png`}
+  src={convertToBaseUrl('version-with-changesets/versioning-packages.png')}
 />
 
 A couple reasons you might want to add versioning to your repo are:
@@ -55,9 +52,7 @@ npx changeset
 This will pick up all of the package.json files referenced as workspaces within your project, and prompt you for which ones need a version bump and a description of the change:
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/version-with-changesets/run-changeset.png`}
+  src={convertToBaseUrl('version-with-changesets/run-changeset.png')}
 />
 
 Once finished, this command generates what's known as a changeset, which is just a markdown file containing human and machine readable metadata about the versions that will be updated. For example:
@@ -79,9 +74,7 @@ npx changeset status --verbose
 ```
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/version-with-changesets/changeset-status.png`}
+  src={convertToBaseUrl('version-with-changesets/changeset-status.png')}
 />
 
 Once ready to version your packages, run:
@@ -95,9 +88,7 @@ This will remove all changeset files you currently have and translate them to pa
 Note: The changesets CLI will automatically update any interdependent package versions based on their sem-versioning ranges:
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/version-with-changesets/update-interdependent.png`}
+  src={convertToBaseUrl('version-with-changesets/update-interdependent.png')}
 />
 
 Finally, commit your changes, build your packages if necessary, and run:
@@ -156,9 +147,7 @@ The workflow you choose with changesets is also extremely customizable due to th
 can do that too.
 
 <img
-  src={`${
-    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
-  }/version-with-changesets/phased-approach.png`}
+  src={convertToBaseUrl('version-with-changesets/phased-approach.png')}
 />
 
 If you've been looking for a highly customizable tool for versioning your components, changesets is the answer. Hope you enjoyed this article, happy coding!
