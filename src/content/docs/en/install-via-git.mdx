@@ -1,0 +1,117 @@
+---
+title: "Install npm packages via git"
+description: "Npm installation using the git cli"
+---
+
+Prefer video format? [See the youtube video instead](https://www.youtube.com/watch?v=SsdYO__ulIY)
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/thumbnail.jpg`}
+/>
+
+## Introduction
+
+You might already be familiar with installing packages from npm registries using commands like these.
+
+```sh
+npm install next
+```
+
+But did you know you can also install packages directly from your git repo? Reference your git repo url & desired branch name or commit hash during install to have your package manager pull down your code.
+
+```sh
+npm install https://your-git-repo-url.git
+```
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/install-example.png`}
+/>
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/usage-example.png`}
+/>
+
+This will work out of the box for simple javascript code, but once you introduce any amount of complexity that necessitates a build step, like typescript, your downstream applications will start running into issues.
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/typescript-fail.png`}
+/>
+
+You could build your code and commit the output to your git repo. But you'll have to remember to compile the code every time you push updates. And do you really want to pollute your git history with unreadable, compiled files?
+
+Some frameworks like [nextjs](https://nextjs.org/docs/advanced-features/compiler#module-transpilation) or [nuxt](https://nuxt.com/docs/api/configuration/nuxt-config#transpile), will support transpiling your node_modules in some capacity to help get around this kind of issue. This means your code doesn't need to be pre-compiled.
+
+But if you're not using a framework like that, you can opt for defining a “prepack” lifecycle method.
+
+## Implementing build processes with the "prepack" step
+
+From the [npm docs](https://docs.npmjs.com/cli/v9/configuring-npm/package-json):
+
+> When installing from a git repository, the presence of certain fields in the package.json will cause npm to believe it needs to perform a build. To do so your repository will be cloned into a temporary directory, all of its deps installed, relevant scripts run, and the resulting directory packed and installed.
+> This flow will occur if your git dependency uses workspaces, or if any of the following scripts are present:
+> build - prepare, prepack, preinstall, install, postinstall
+
+When installing from a git url versus an npm registry, dependencies are downloaded a bit differently. The biggest difference is that if your package contains a prepare or prepack step, npm and yarn will download both dependencies and dev dependencies. Then, it will run the prepack step, so that any compiled files are available. This means you can implement whatever build step you want within the prepack step.
+
+For a simple typescript example your script might look like the following:
+
+```json
+// package.json
+{
+    ...
+    "scripts": {
+        "prepack": "tsc"
+    },
+    ...
+}
+
+```
+
+<img
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/typescript-success.png`}
+/>
+
+## Limitations
+
+The biggest limitations of installing packages via git url are the support for nested directories and workspaces.
+
+With `npm`, the package.json file must be located at the root of the repo, meaning this approach doesn't work for mono-repos or projects where the npm package doesn't live at the root.
+
+<img
+  class="split-desktop-image"
+  style={{ verticalAlign: "top" }}
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/not-workspaces.png`}
+/>
+<img
+  class="split-desktop-image"
+  src={`${
+    import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL
+  }/install-via-git/not-nested.png`}
+/>
+
+### yarn extended functionality for workspaces
+
+While npm does not support workspaces, the latest version of `yarn` [allows for passing an extra parameter](https://yarnpkg.com/features/protocols/#can-i-install-a-workspace-of-a-project-when-using-the-git-protocol) which allows you to support `workspaces`:
+
+```json
+// package.json
+{
+  "dependencies": {
+    "my-pkg": "org/app#workspace=my-pkg"
+  }
+}
+```
+
+I hope this article was useful to you. Happy coding!

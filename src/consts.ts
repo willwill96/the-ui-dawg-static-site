@@ -53,6 +53,10 @@ export const SIDEBAR: Sidebar = {
         text: "Version Your Packages with Changesets",
         link: `${import.meta.env.BASE_URL}en/version-with-changesets`,
       },
+      {
+        text: "Install NPM Packages via git",
+        link: `${import.meta.env.BASE_URL}en/install-via-git`,
+      },
     ],
   },
 };
