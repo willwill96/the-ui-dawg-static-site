@@ -132,6 +132,7 @@ const githubEditUrl = `${GITHUB_EDIT_URL}/${currentFile}`;
         <PageContent
           title={data.title}
           headings={headings}
+          filePath={currentFile}
           githubEditUrl={githubEditUrl}
         >
           <slot />

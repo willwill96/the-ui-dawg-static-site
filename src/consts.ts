@@ -57,6 +57,10 @@ export const SIDEBAR: Sidebar = {
         text: "Install NPM Packages via git",
         link: `${import.meta.env.BASE_URL}en/install-via-git`,
       },
+      {
+        text: "Guide to Comparing NPM Packages",
+        link: `${import.meta.env.BASE_URL}en/comparing-npm-packages`,
+      },
     ],
   },
 };
