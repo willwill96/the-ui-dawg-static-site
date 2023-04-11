@@ -17,7 +17,7 @@ type Props = CollectionEntry<"docs">["data"] & {
 
 const { headings, ...data } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const currentPage = Astro.url.pathname;
+const currentPage = `/${Astro.url.pathname}`;
 
 const currentFile = removeBaseUrl(
   `src/content/docs${currentPage.replace(/\/$/, "")}.mdx`

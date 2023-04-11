@@ -3,7 +3,7 @@ title: "Containerizing Development with VS Code Devcontainers"
 description: "Containerized Development within VS Code"
 ---
 
-import {convertToBaseUrl} from '../../../utils/base-url'
+import { convertToBaseUrl } from "../../../utils/base-url";
 
 Prefer video format? [See the youtube video instead](https://www.youtube.com/watch?v=cB86HE_HIDc)
 
@@ -15,9 +15,7 @@ One of the most frustrating experiences can be environment setup, whether you're
 
 In short, a dev container is a containerized environment used for development purposes. It mounts your repository inside a Dockerfile so that you can develop in an isolated environment.
 
-<img
-  src={convertToBaseUrl('devcontainers/vs-code-devcontainer-diagram.png')}
-/>
+<img src={convertToBaseUrl("devcontainers/vs-code-devcontainer-diagram.png")} />
 
 ## Creating a Dev Container
 
@@ -27,9 +25,7 @@ To create a dev container, you'll need to have VS Code and Docker installed, as 
 
 Once you've opened the project in VS Code, open the command palette (`Ctrl/Cmd+Shift+P`) and type "Create New Devcontainer Config." Cycle through the options and select the image most appropriate for your project. Most of my projects are javascript-based, so I normally choose `Node`.
 
-<img
-  src={convertToBaseUrl('devcontainers/add-devcontainer-file.png')}
-/>
+<img src={convertToBaseUrl("devcontainers/add-devcontainer-file.png")} />
 
 After going through all the prompts, you should see a pop-up that says "Re-open in container." Let's hold off on doing that for now though & take a look at the `.devcontainer/devcontainer.json` file that was generated.
 
@@ -123,9 +119,7 @@ If you need to access your app from localhost, you can configure the devcontaine
 
 Now that the configuration is setup, let's build the container and see what it looks like inside. Open the command palette and run "Remote Containers: Rebuild & Reopen in Container". Note that this may take a bit the first build, but since the image is built with Docker, subsequent rebuilds of the container should be cached and lightning quick.
 
-<img
-  src={convertToBaseUrl('devcontainers/build-and-reopen.png')}
-/>
+<img src={convertToBaseUrl("devcontainers/build-and-reopen.png")} />
 
 Once that's finished, you should see a VS Code window opened. If you applied any configuration, (for example, default theme, or extensions), you should see that they are installed & applied to your IDE. Additionally, if you open a terminal, you should also see that any globally installed tools are available. From here, you have a fully functional IDE running from within a container!
 

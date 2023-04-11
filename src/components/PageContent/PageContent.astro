@@ -17,14 +17,20 @@ const { title, headings, githubEditUrl, filePath } = Astro.props;
 const resolvedPath = removeBaseUrl(filePath);
 const url = `https://api.github.com/repos/willwill96/the-ui-dawg-static-site/commits?path=${resolvedPath}`;
 
-const commits = await getCommits(url)
-const lastModified = commits[0] ? new Date(commits[0].commit.author.date).toLocaleDateString() : 'N/A'
+const commits = await getCommits(url);
+const lastModified = commits[0]
+  ? new Date(commits[0].commit.author.date).toLocaleDateString()
+  : "N/A";
 ---
 
 <article id="article" class="content">
   <section class="main-section">
     <h1 class="content-title" id="overview">{title}</h1>
-    {lastModified && <span class="content-modified">Last modified: {lastModified}</span>}
+    {
+      lastModified && (
+        <span class="content-modified">Last modified: {lastModified}</span>
+      )
+    }
     <nav class="block sm:hidden">
       <TableOfContents client:media="(max-width: 50em)" headings={headings} />
     </nav>

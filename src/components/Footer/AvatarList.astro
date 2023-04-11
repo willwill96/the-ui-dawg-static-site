@@ -3,7 +3,6 @@ import { removeBaseUrl } from "../../utils/base-url";
 import getCommits from "../../utils/get-commits";
 import type { Commit } from "../../utils/get-commits";
 
-
 // fetch all commits for just this page's path
 type Props = {
   path: string;
@@ -12,9 +11,6 @@ const { path } = Astro.props;
 const resolvedPath = removeBaseUrl(path);
 const url = `https://api.github.com/repos/willwill96/the-ui-dawg-static-site/commits?path=${resolvedPath}`;
 const commitsURL = `https://github.com/willwill96/the-ui-dawg-static-site/commits/main/${resolvedPath}`;
-
-
-
 
 function removeDups(arr: Commit[]) {
   const map = new Map<string, Commit["author"]>();

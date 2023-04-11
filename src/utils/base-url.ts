@@ -3,7 +3,6 @@ export const convertToBaseUrl = (value: string) => {
     return `${import.meta.env.BASE_URL}/${value}`;
   }
   return `/${value}`;
-
 };
 
 export const removeBaseUrl = (value: string) => {

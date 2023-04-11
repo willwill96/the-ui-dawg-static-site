@@ -2,13 +2,12 @@
 title: "Install npm packages via git"
 description: "Npm installation using the git cli"
 ---
-import {convertToBaseUrl} from '../../../utils/base-url'
+
+import { convertToBaseUrl } from "../../../utils/base-url";
 
 Prefer video format? [See the youtube video instead](https://www.youtube.com/watch?v=SsdYO__ulIY)
 
-<img
-  src={convertToBaseUrl('install-via-git/thumbnail.jpg')} 
-/>
+<img src={convertToBaseUrl("install-via-git/thumbnail.jpg")} />
 
 ## Introduction
 
@@ -24,19 +23,13 @@ But did you know you can also install packages directly from your git repo? Refe
 npm install https://your-git-repo-url.git
 ```
 
-<img
-  src={convertToBaseUrl('install-via-git/install-example.png')}
-/>
+<img src={convertToBaseUrl("install-via-git/install-example.png")} />
 
-<img
-  src={convertToBaseUrl('install-via-git/usage-example.png')}
-/>
+<img src={convertToBaseUrl("install-via-git/usage-example.png")} />
 
 This will work out of the box for simple javascript code, but once you introduce any amount of complexity that necessitates a build step, like typescript, your downstream applications will start running into issues.
 
-<img
-  src={convertToBaseUrl('install-via-git/typescript-fail.png')}
-/>
+<img src={convertToBaseUrl("install-via-git/typescript-fail.png")} />
 
 You could build your code and commit the output to your git repo. But you'll have to remember to compile the code every time you push updates. And do you really want to pollute your git history with unreadable, compiled files?
 
@@ -68,9 +61,7 @@ For a simple typescript example your script might look like the following:
 
 ```
 
-<img
-  src={convertToBaseUrl('install-via-git/typescript-success.png')}
-/>
+<img src={convertToBaseUrl("install-via-git/typescript-success.png")} />
 
 ## Limitations
 
@@ -81,11 +72,11 @@ With `npm`, the package.json file must be located at the root of the repo, meani
 <img
   class="split-desktop-image"
   style={{ verticalAlign: "top" }}
-  src={convertToBaseUrl('install-via-git/not-workspaces.png')}
+  src={convertToBaseUrl("install-via-git/not-workspaces.png")}
 />
 <img
   class="split-desktop-image"
-  src={convertToBaseUrl('install-via-git/not-nested.png')}
+  src={convertToBaseUrl("install-via-git/not-nested.png")}
 />
 
 ### yarn extended functionality for workspaces
