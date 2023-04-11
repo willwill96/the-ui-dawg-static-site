@@ -23,9 +23,9 @@ export const GITHUB_EDIT_URL = `https://github.com/willwill96/the-ui-dawg-static
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
-  indexName: "XXXXXXXXXX",
-  appId: "XXXXXXXXXX",
-  apiKey: "XXXXXXXXXX",
+  indexName: "the-ui-dawg-static",
+  appId: "ON2X9JCA4B",
+  apiKey: "7d2cceabc700ea1600758f7d53ba9dc0",
 };
 
 export type Sidebar = Record<
