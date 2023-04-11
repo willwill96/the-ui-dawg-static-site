@@ -120,7 +120,7 @@
                       Containerizing Development with VS Code Dev Containers
                     </a>
                   </li><li class="nav-link astro-KQNE5HRN">
-                    <a href="/the-ui-dawg-static-site/en/version-with-changesets" aria-current="page" class="astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/version-with-changesets" class="astro-KQNE5HRN">
                       Version Your Packages with Changesets
                     </a>
                   </li><li class="nav-link astro-KQNE5HRN">
@@ -160,10 +160,10 @@
   <p>Prefer video format? <a href="https://www.youtube.com/watch?v=vO80X5zM8_Y">See the youtube video instead</a></p>
 <p><a href="https://github.com/changesets/changesets">Changesets</a> is “a tool to manage versioning and changelogs
 with a focus on multi-package repositories.”</p>
-<img src="/version-with-changesets/changesets-banner.png"/>
+<img src="/the-ui-dawg-static-site//version-with-changesets/changesets-banner.png"/>
 <p>There are other approaches to versioning the packages in your mono-repo like using <a href="https://intuit.github.io/auto/docs">intuit’s auto</a>, <a href="https://microsoft.github.io/beachball/overview/getting-started.html">microsoft’s beachball</a>, or <a href="https://lerna.js.org/docs/getting-started">lerna &amp; conventional commits</a>, but I’ve found that Changesets offers the least opinionated and most customizable set of features.</p>
 <p>Before getting into the features of changesets, I’d like point out that not every app or organization needs to version their packages. In a lot of cases, adding the ability to version your packages, is an extra complexity that will just add bloat.</p>
-<img src="/version-with-changesets/versioning-packages.png"/>
+<img src="/the-ui-dawg-static-site//version-with-changesets/versioning-packages.png"/>
 <p>A couple reasons you might want to add versioning to your repo are:</p>
 <ol>
 <li>Open sourcing your package(s) and publishing to a public npm registry</li>
@@ -181,7 +181,7 @@ with a focus on multi-package repositories.”</p>
 <p>To version a package, run:</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#C9D1D9">npx changeset</span></span></code></pre>
 <p>This will pick up all of the package.json files referenced as workspaces within your project, and prompt you for which ones need a version bump and a description of the change:</p>
-<img src="/version-with-changesets/run-changeset.png"/>
+<img src="/the-ui-dawg-static-site//version-with-changesets/run-changeset.png"/>
 <p>Once finished, this command generates what’s known as a changeset, which is just a markdown file containing human and machine readable metadata about the versions that will be updated. For example:</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#79C0FF;font-style:italic"># .changesets/gold-forks-return.md</span></span>
 <span class="line"></span>
@@ -192,12 +192,12 @@ with a focus on multi-package repositories.”</p>
 <span class="line"><span style="color:#C9D1D9">Add a new feature</span></span></code></pre>
 <p>Next optionally run the following to see what changes will be published as part of the next release:</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#C9D1D9">npx changeset status --verbose</span></span></code></pre>
-<img src="/version-with-changesets/changeset-status.png"/>
+<img src="/the-ui-dawg-static-site//version-with-changesets/changeset-status.png"/>
 <p>Once ready to version your packages, run:</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#C9D1D9">npx changeset version</span></span></code></pre>
 <p>This will remove all changeset files you currently have and translate them to package version and changelog updates.</p>
 <p>Note: The changesets CLI will automatically update any interdependent package versions based on their sem-versioning ranges:</p>
-<img src="/version-with-changesets/update-interdependent.png"/>
+<img src="/the-ui-dawg-static-site//version-with-changesets/update-interdependent.png"/>
 <p>Finally, commit your changes, build your packages if necessary, and run:</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#C9D1D9"> npx changeset publish</span></span></code></pre>
 <p>This command will publish your code to npm and create git tags for each of the new packages.</p>
@@ -223,7 +223,7 @@ For example, A version bump to <code>package-a</code> implies a version bump to 
 <p>This wasn’t an entirely inclusive list of all of the features of changesets, but hopefully this gives you a good idea of how customizable your versioning scheme can be with changesets.</p>
 <p>The workflow you choose with changesets is also extremely customizable due to the phased approach it takes where you first create a changeset, then version your packages and finally publish the changed packages. Each step is its own independent step which is only loosely coupled to the overall changesets lifecycle. So if you want to automate the creation of changesets, you can easily replace that step. If you want your own custom publish process, you
 can do that too.</p>
-<img src="/version-with-changesets/phased-approach.png"/>
+<img src="/the-ui-dawg-static-site//version-with-changesets/phased-approach.png"/>
 <p>If you’ve been looking for a highly customizable tool for versioning your components, changesets is the answer. Hope you enjoyed this article, happy coding!</p>
 
         

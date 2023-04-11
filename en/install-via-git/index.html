@@ -124,7 +124,7 @@
                       Version Your Packages with Changesets
                     </a>
                   </li><li class="nav-link astro-KQNE5HRN">
-                    <a href="/the-ui-dawg-static-site/en/install-via-git" aria-current="page" class="astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/install-via-git" class="astro-KQNE5HRN">
                       Install NPM Packages via git
                     </a>
                   </li><li class="nav-link astro-KQNE5HRN">
@@ -158,16 +158,16 @@
     
           
   <p>Prefer video format? <a href="https://www.youtube.com/watch?v=SsdYO__ulIY">See the youtube video instead</a></p>
-<img src="/install-via-git/thumbnail.jpg"/>
+<img src="/the-ui-dawg-static-site//install-via-git/thumbnail.jpg"/>
 <h2 id="introduction">Introduction</h2>
 <p>You might already be familiar with installing packages from npm registries using commands like these.</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#C9D1D9">npm install next</span></span></code></pre>
 <p>But did you know you can also install packages directly from your git repo? Reference your git repo url &amp; desired branch name or commit hash during install to have your package manager pull down your code.</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#C9D1D9">npm install https://your-git-repo-url.git</span></span></code></pre>
-<img src="/install-via-git/install-example.png"/>
-<img src="/install-via-git/usage-example.png"/>
+<img src="/the-ui-dawg-static-site//install-via-git/install-example.png"/>
+<img src="/the-ui-dawg-static-site//install-via-git/usage-example.png"/>
 <p>This will work out of the box for simple javascript code, but once you introduce any amount of complexity that necessitates a build step, like typescript, your downstream applications will start running into issues.</p>
-<img src="/install-via-git/typescript-fail.png"/>
+<img src="/the-ui-dawg-static-site//install-via-git/typescript-fail.png"/>
 <p>You could build your code and commit the output to your git repo. But you’ll have to remember to compile the code every time you push updates. And do you really want to pollute your git history with unreadable, compiled files?</p>
 <p>Some frameworks like <a href="https://nextjs.org/docs/advanced-features/compiler#module-transpilation">nextjs</a> or <a href="https://nuxt.com/docs/api/configuration/nuxt-config#transpile">nuxt</a>, will support transpiling your node_modules in some capacity to help get around this kind of issue. This means your code doesn’t need to be pre-compiled.</p>
 <p>But if you’re not using a framework like that, you can opt for defining a “prepack” lifecycle method.</p>
@@ -189,12 +189,12 @@ build - prepare, prepack, preinstall, install, postinstall</p>
 <span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FFA198">...</span></span>
 <span class="line"><span style="color:#C9D1D9">}</span></span>
 <span class="line"></span></code></pre>
-<img src="/install-via-git/typescript-success.png"/>
+<img src="/the-ui-dawg-static-site//install-via-git/typescript-success.png"/>
 <h2 id="limitations">Limitations</h2>
 <p>The biggest limitations of installing packages via git url are the support for nested directories and workspaces.</p>
 <p>With <code>npm</code>, the package.json file must be located at the root of the repo, meaning this approach doesn’t work for mono-repos or projects where the npm package doesn’t live at the root.</p>
-<img class="split-desktop-image" style="vertical-align:top" src="/install-via-git/not-workspaces.png"/>
-<img class="split-desktop-image" src="/install-via-git/not-nested.png"/>
+<img class="split-desktop-image" style="vertical-align:top" src="/the-ui-dawg-static-site//install-via-git/not-workspaces.png"/>
+<img class="split-desktop-image" src="/the-ui-dawg-static-site//install-via-git/not-nested.png"/>
 <h3 id="yarn-extended-functionality-for-workspaces">yarn extended functionality for workspaces</h3>
 <p>While npm does not support workspaces, the latest version of <code>yarn</code> <a href="https://yarnpkg.com/features/protocols/#can-i-install-a-workspace-of-a-project-when-using-the-git-protocol">allows for passing an extra parameter</a> which allows you to support <code>workspaces</code>:</p>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#8B949E">// package.json</span></span>
