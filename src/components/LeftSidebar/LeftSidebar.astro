@@ -1,7 +1,6 @@
 ---
 import { getLanguageFromURL } from "../../languages";
 import { SIDEBAR } from "../../consts";
-import { convertToBaseUrl } from "../../utils/base-url";
 
 type Props = {
   currentPage: string;
@@ -9,9 +8,8 @@ type Props = {
 
 const { currentPage } = Astro.props;
 
-const currentPageMatch = convertToBaseUrl(
+const currentPageMatch =
   currentPage.endsWith("/") ? currentPage.slice(1, -1) : currentPage.slice(1)
-);
 const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
 ---
