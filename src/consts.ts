@@ -62,5 +62,15 @@ export const SIDEBAR: Sidebar = {
         link: `${import.meta.env.BASE_URL}en/comparing-npm-packages`,
       },
     ],
+    "Side Projects": [
+      {
+        text: "Petfinder GraphQL Server",
+        link: `${import.meta.env.BASE_URL}en/projects/petfinder-graphql`,
+      },
+      {
+        text: "Mono-repo Tools",
+        link: `${import.meta.env.BASE_URL}en/projects/mono-repo-tools`,
+      },
+    ],
   },
 };
