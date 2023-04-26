@@ -42,6 +42,10 @@ export const SIDEBAR: Sidebar = {
     ],
     "Blog Posts": [
       {
+        text: "Extending Keycloak Themes with Keycloakify",
+        link: `${import.meta.env.BASE_URL}en/keycloakify`,
+      },
+      {
         text: "Reusing Components Across Frameworks",
         link: `${import.meta.env.BASE_URL}en/reusing-components`,
       },
