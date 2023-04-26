@@ -183,7 +183,7 @@
 <h2 id="what-is-keycloakify-solving">What is Keycloakify solving?</h2>
 <p>To answer this question requires a bit of context as to how keycloak themes work internally. You can find more information on keycloak theming <a href="https://www.keycloak.org/docs/latest/server_development/#_themes">at their docs page</a>. There are two important pieces in my opinion though:</p>
 <ol>
-<li>Themes are defined in a file format called freemarker template (<code>.ftl</code>). An example of one the built-in theme pages looks like this (<code>info.ftl</code>):</li>
+<li>Themes are defined in a file format called freemarker template (<code>.ftl</code>). An example of one of the built-in theme pages looks like this (<code>info.ftl</code>):</li>
 </ol>
 <pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#import &quot;template.ftl&quot; as layout&gt;</span></span>
 <span class="line"><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">@layout.registrationLayout displayMessage=false; section&gt;</span></span>
@@ -216,7 +216,7 @@
 <p>These two factors make it difficult to build a keycloak theme with a modern web framework like React, because most build systems require you to know the hosted url before building the app and output static assets along with html files, not freemarker templates. This is where <a href="https://keycloakify.dev/">Keycloakify</a> comes in. It provides a built-in solution for react apps that answers the questions:</p>
 <ol>
 <li>How do I convert my app’s build to the proper set of freemarker templates that provide me access to templating variables in my webapp?</li>
-<li>How do I update asset URIs at runtime to reference the correct url where keycloak hosts them.</li>
+<li>How do I update asset URIs at runtime to reference the correct url where keycloak hosts them?</li>
 </ol>
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="keycloak">Keycloak</h3>
