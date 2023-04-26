@@ -15,7 +15,7 @@ I won't be going too in depth into keycloak itself, as I want to stay focused on
 ## What is Keycloakify solving?
 
 To answer this question requires a bit of context as to how keycloak themes work internally. You can find more information on keycloak theming [at their docs page](https://www.keycloak.org/docs/latest/server_development/#_themes). There are two important pieces in my opinion though:
-1. Themes are defined in a file format called freemarker template (`.ftl`). An example of one the built-in theme pages looks like this (`info.ftl`):
+1. Themes are defined in a file format called freemarker template (`.ftl`). An example of one of the built-in theme pages looks like this (`info.ftl`):
 ```html
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=false; section>
@@ -50,7 +50,7 @@ GET /resources/3czkt/common/keycloak/web_modules/@patternfly/react-core/dist/sty
 
 These two factors make it difficult to build a keycloak theme with a modern web framework like React, because most build systems require you to know the hosted url before building the app and output static assets along with html files, not freemarker templates. This is where [Keycloakify](https://keycloakify.dev/) comes in. It provides a built-in solution for react apps that answers the questions:
 1. How do I convert my app's build to the proper set of freemarker templates that provide me access to templating variables in my webapp?
-2. How do I update asset URIs at runtime to reference the correct url where keycloak hosts them.
+2. How do I update asset URIs at runtime to reference the correct url where keycloak hosts them?
 
 
 ## Getting Started
