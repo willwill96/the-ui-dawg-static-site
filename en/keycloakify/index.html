@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-us" class="initial astro-OUAMJN2I">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="generator" content="Astro v2.2.1">
+
+<link rel="icon" type="image/svg+xml" href="/the-ui-dawg-static-site/favicon.png">
+
+<link rel="sitemap" href="/sitemap.xml">
+
+<!-- Preload Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- Scrollable a11y code helper -->
+<script src="/the-ui-dawg-static-site/make-scrollable-code-focusable.js"></script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+<script>
+  const root = document.documentElement;
+  const theme = localStorage.getItem("theme");
+  if (
+    theme === "dark" ||
+    (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    root.classList.add("theme-dark");
+  } else {
+    root.classList.remove("theme-dark");
+  }
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEL60V1WM9" is:inline></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TEL60V1WM9');
+</script> -->
+    <!-- Page Metadata --><link rel="canonical" href="https://willwill96.github.io/the-ui-dawg-static-site/en/keycloakify/">
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content="Extending Keycloak Themes with Keycloakify 🚀 The UI Dawg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://willwill96.github.io/the-ui-dawg-static-site/en/keycloakify/">
+<meta property="og:locale" content="en-us">
+<meta property="og:image" content="https://github.com/withastro/astro/blob/main/.github/assets/banner.png?raw=true">
+<meta property="og:image:alt" content="astro logo on a starry expanse of space, with a purple saturn-like planet floating in the right foreground">
+<meta name="description" property="og:description" content="How to Integrate Keycloakify with Keycloak">
+<meta property="og:site_name" content="The UI Dawg">
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="astrodotbuild">
+<meta name="twitter:title" content="Extending Keycloak Themes with Keycloakify 🚀 The UI Dawg">
+<meta name="twitter:description" content="How to Integrate Keycloakify with Keycloak">
+<meta name="twitter:image" content="https://github.com/withastro/astro/blob/main/.github/assets/banner.png?raw=true">
+<meta name="twitter:image:alt" content="astro logo on a starry expanse of space, with a purple saturn-like planet floating in the right foreground">
+
+<!--
+  TODO: Add json+ld data, maybe https://schema.org/APIReference makes sense?
+  Docs: https://developers.google.com/search/docs/advanced/structured-data/intro-structured-data
+  https://www.npmjs.com/package/schema-dts seems like a great resource for implementing this.
+  Even better, there's a React component that integrates with `schema-dts`: https://github.com/google/react-schemaorg
+-->
+    <title>
+      Extending Keycloak Themes with Keycloakify 🚀 The UI Dawg
+    </title>
+    
+    
+  <link rel="stylesheet" href="/the-ui-dawg-static-site/_astro/_...slug_.48d97b4c.css" /></head>
+
+  <body class="astro-OUAMJN2I">
+    <header class="astro-2W66RQV5">
+  <a href="#article" class="sr-only focus:not-sr-only skiplink astro-DMGOOZ7Y"><span class="astro-DMGOOZ7Y">Skip to Content</span></a>
+  <nav class="nav-wrapper astro-2W66RQV5" title="Top Navigation">
+    <div class="menu-toggle astro-2W66RQV5">
+      <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).idle=t=>{const e=async()=>{await(await t())()};"requestIdleCallback"in window?window.requestIdleCallback(e):setTimeout(e,200)},window.dispatchEvent(new Event("astro:idle"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="Z27AMYa" component-url="/the-ui-dawg-static-site/_astro/SidebarToggle.90a3e4e8.js" component-export="default" renderer-url="/the-ui-dawg-static-site/_astro/client.8b0578c2.js" props="{&quot;class&quot;:[0,&quot;astro-2W66RQV5&quot;]}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;SidebarToggle&quot;,&quot;value&quot;:true}" await-children=""><button type="button" aria-pressed="false" id="menu-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span></button></astro-island>
+    </div>
+    <div class="logo flex astro-2W66RQV5">
+      <a href="/the-ui-dawg-static-site/" class="astro-2W66RQV5">
+        <img src="/the-ui-dawg-static-site/logo.png" style="width:40px" class="astro-2W66RQV5">
+        <h1 class="astro-2W66RQV5">The UI Dawg</h1>
+      </a>
+    </div>
+    <div style="flex-grow: 1;" class="astro-2W66RQV5"></div>
+    
+    <div class="search-item astro-2W66RQV5">
+      <astro-island uid="lcweu" component-url="/the-ui-dawg-static-site/_astro/Search.d84543ec.js" component-export="default" renderer-url="/the-ui-dawg-static-site/_astro/client.fd400d45.js" props="{}" ssr="" client="idle" opts="{&quot;name&quot;:&quot;Search&quot;,&quot;value&quot;:true}" await-children=""><button type="button" class="search-input"><svg width="24" height="24" fill="none"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Search</span><span class="search-hint"><span class="sr-only">Press </span><kbd>/</kbd><span class="sr-only"> to search</span></span></button></astro-island>
+    </div>
+  </nav>
+</header>
+    <main class="layout astro-OUAMJN2I">
+      <aside id="grid-left" class="grid-sidebar astro-OUAMJN2I" title="Site Navigation">
+        <nav aria-labelledby="grid-left" class="astro-KQNE5HRN">
+  <ul class="nav-groups astro-KQNE5HRN">
+    <li class="astro-KQNE5HRN">
+          <div class="nav-group astro-KQNE5HRN">
+            <h2 class="nav-group-title astro-KQNE5HRN">Overview</h2>
+            <ul class="astro-KQNE5HRN">
+              <li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/introduction" class="astro-KQNE5HRN">
+                      Introduction
+                    </a>
+                  </li>
+            </ul>
+          </div>
+        </li><li class="astro-KQNE5HRN">
+          <div class="nav-group astro-KQNE5HRN">
+            <h2 class="nav-group-title astro-KQNE5HRN">Blog Posts</h2>
+            <ul class="astro-KQNE5HRN">
+              <li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/keycloakify" aria-current="page" class="astro-KQNE5HRN">
+                      Extending Keycloak Themes with Keycloakify
+                    </a>
+                  </li><li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/reusing-components" class="astro-KQNE5HRN">
+                      Reusing Components Across Frameworks
+                    </a>
+                  </li><li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/devcontainers" class="astro-KQNE5HRN">
+                      Containerizing Development with VS Code Dev Containers
+                    </a>
+                  </li><li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/version-with-changesets" class="astro-KQNE5HRN">
+                      Version Your Packages with Changesets
+                    </a>
+                  </li><li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/install-via-git" class="astro-KQNE5HRN">
+                      Install NPM Packages via git
+                    </a>
+                  </li><li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/comparing-npm-packages" class="astro-KQNE5HRN">
+                      Guide to Comparing NPM Packages
+                    </a>
+                  </li>
+            </ul>
+          </div>
+        </li><li class="astro-KQNE5HRN">
+          <div class="nav-group astro-KQNE5HRN">
+            <h2 class="nav-group-title astro-KQNE5HRN">Side Projects</h2>
+            <ul class="astro-KQNE5HRN">
+              <li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/projects/petfinder-graphql" class="astro-KQNE5HRN">
+                      Petfinder GraphQL Server
+                    </a>
+                  </li><li class="nav-link astro-KQNE5HRN">
+                    <a href="/the-ui-dawg-static-site/en/projects/mono-repo-tools" class="astro-KQNE5HRN">
+                      Mono-repo Tools
+                    </a>
+                  </li>
+            </ul>
+          </div>
+        </li>
+  </ul>
+</nav>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    var target = document.querySelector('[aria-current="page"]');
+    if (target && target.offsetTop > window.innerHeight - 100) {
+      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
+    }
+  });
+</script>
+      </aside>
+      <div id="grid-main" class="astro-OUAMJN2I">
+        <article id="article" class="content astro-J75B3YUS">
+  <section class="main-section astro-J75B3YUS">
+    <h1 class="content-title astro-J75B3YUS" id="overview">Extending Keycloak Themes with Keycloakify</h1>
+    <span class="content-modified astro-J75B3YUS">Last modified: 4/26/2023</span>
+    <nav class="block sm:hidden astro-J75B3YUS">
+      <script>(self.Astro=self.Astro||{}).media=(s,a)=>{const t=async()=>{await(await s())()};if(a.value){const e=matchMedia(a.value);e.matches?t():e.addEventListener("change",t,{once:!0})}},window.dispatchEvent(new Event("astro:media"));</script><astro-island uid="Znxjj6" component-url="/the-ui-dawg-static-site/_astro/TableOfContents.4ec541fb.js" component-export="default" renderer-url="/the-ui-dawg-static-site/_astro/client.8b0578c2.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;what-is-keycloak\&quot;],\&quot;text\&quot;:[0,\&quot;What is Keycloak?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;what-is-keycloakify-solving\&quot;],\&quot;text\&quot;:[0,\&quot;What is Keycloakify solving?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;getting-started\&quot;],\&quot;text\&quot;:[0,\&quot;Getting Started\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;keycloak\&quot;],\&quot;text\&quot;:[0,\&quot;Keycloak\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;keycloakify\&quot;],\&quot;text\&quot;:[0,\&quot;Keycloakify\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;integrating-keycloak-and-keycloakify-jar\&quot;],\&quot;text\&quot;:[0,\&quot;Integrating Keycloak and Keycloakify Jar\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;making-changes\&quot;],\&quot;text\&quot;:[0,\&quot;Making Changes\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;individual-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Individual Pages\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;other-updates\&quot;],\&quot;text\&quot;:[0,\&quot;Other Updates\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;conclusion\&quot;],\&quot;text\&quot;:[0,\&quot;Conclusion\&quot;]}]]&quot;],&quot;class&quot;:[0,&quot;astro-J75B3YUS&quot;]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(max-width: 50em)&quot;}" await-children=""><h2 id="on-this-page-heading" class="heading">On this page</h2><ul><li class="header-link depth-2"><a href="#what-is-keycloak">What is Keycloak?</a></li><li class="header-link depth-2"><a href="#what-is-keycloakify-solving">What is Keycloakify solving?</a></li><li class="header-link depth-2"><a href="#getting-started">Getting Started</a></li><li class="header-link depth-3"><a href="#keycloak">Keycloak</a></li><li class="header-link depth-3"><a href="#keycloakify">Keycloakify</a></li><li class="header-link depth-3"><a href="#integrating-keycloak-and-keycloakify-jar">Integrating Keycloak and Keycloakify Jar</a></li><li class="header-link depth-2"><a href="#making-changes">Making Changes</a></li><li class="header-link depth-3"><a href="#individual-pages">Individual Pages</a></li><li class="header-link depth-3"><a href="#other-updates">Other Updates</a></li><li class="header-link depth-2"><a href="#conclusion">Conclusion</a></li></ul></astro-island>
+    </nav>
+    
+          
+  <img src="/the-ui-dawg-static-site//keycloakify/keycloakify.png"/>
+<h2 id="what-is-keycloak">What is Keycloak?</h2>
+<p>Keycloak is an open-source identity and access management solution that enables authentication and authorization for web and mobile applications. It provides features such as single sign-on, social login, and user federation across different identity providers. With Keycloak, developers can focus on building their applications while delegating authentication and authorization to the Keycloak server.</p>
+<p>I won’t be going too in depth into keycloak itself, as I want to stay focused on the theme extension aspect. In this article, my goal is to explain the value that Keycloakify adds as well as giving you some instructions to get started.</p>
+<h2 id="what-is-keycloakify-solving">What is Keycloakify solving?</h2>
+<p>To answer this question requires a bit of context as to how keycloak themes work internally. You can find more information on keycloak theming <a href="https://www.keycloak.org/docs/latest/server_development/#_themes">at their docs page</a>. There are two important pieces in my opinion though:</p>
+<ol>
+<li>Themes are defined in a file format called freemarker template (<code>.ftl</code>). An example of one the built-in theme pages looks like this (<code>info.ftl</code>):</li>
+</ol>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#import &quot;template.ftl&quot; as layout&gt;</span></span>
+<span class="line"><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">@layout.registrationLayout displayMessage=false; section&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#if section = &quot;header&quot;&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#if messageHeader??&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        ${messageHeader}</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#else&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        ${message.summary}</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#if&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#elseif section = &quot;form&quot;&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">    &lt;</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">id</span><span style="color:#C9D1D9">=</span><span style="color:#A5D6FF">&quot;kc-info-message&quot;</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        &lt;</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">class</span><span style="color:#C9D1D9">=</span><span style="color:#A5D6FF">&quot;instruction&quot;</span><span style="color:#C9D1D9">&gt;${message.summary}</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#if requiredActions??&gt;</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#list requiredActions&gt;: &lt;</span><span style="color:#7EE787">b</span><span style="color:#C9D1D9">&gt;</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#items as reqActionItem&gt;${kcSanitize(msg(&quot;requiredAction.${reqActionItem}&quot;))?no_esc}</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#sep&gt;, </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#items&gt;&lt;/</span><span style="color:#7EE787">b</span><span style="color:#C9D1D9">&gt;</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#list&gt;</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#else&gt;</span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#if&gt;&lt;/</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#if skipLink??&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#else&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">            </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#if pageRedirectUri?has_content&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">                &lt;</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;&lt;</span><span style="color:#7EE787">a</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">href</span><span style="color:#C9D1D9">=</span><span style="color:#A5D6FF">&quot;${pageRedirectUri}&quot;</span><span style="color:#C9D1D9">&gt;${kcSanitize(msg(&quot;backToApplication&quot;))?no_esc}&lt;/</span><span style="color:#7EE787">a</span><span style="color:#C9D1D9">&gt;&lt;/</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">            </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#elseif actionUri?has_content&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">                &lt;</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;&lt;</span><span style="color:#7EE787">a</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">href</span><span style="color:#C9D1D9">=</span><span style="color:#A5D6FF">&quot;${actionUri}&quot;</span><span style="color:#C9D1D9">&gt;${kcSanitize(msg(&quot;proceedWithAction&quot;))?no_esc}&lt;/</span><span style="color:#7EE787">a</span><span style="color:#C9D1D9">&gt;&lt;/</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">            </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">#elseif (client.baseUrl)?has_content&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">                &lt;</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;&lt;</span><span style="color:#7EE787">a</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">href</span><span style="color:#C9D1D9">=</span><span style="color:#A5D6FF">&quot;${client.baseUrl}&quot;</span><span style="color:#C9D1D9">&gt;${kcSanitize(msg(&quot;backToApplication&quot;))?no_esc}&lt;/</span><span style="color:#7EE787">a</span><span style="color:#C9D1D9">&gt;&lt;/</span><span style="color:#7EE787">p</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">            </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#if&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#if&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">    &lt;/</span><span style="color:#7EE787">div</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/#if&gt;</span></span>
+<span class="line"><span style="color:#FFA198">&lt;</span><span style="color:#C9D1D9">/@layout.registrationLayout&gt;</span></span></code></pre>
+<ol start="2">
+<li>Keycloak supports hosting asset files (ex images, javascript, css), but its approach involves hosting the assets at a hashed url that is unknown until the keycloak container has been built. For example a url for a static asset might look like the following (Note the hashed value in the second part of the url):</li>
+</ol>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">GET /resources/3czkt/common/keycloak/web_modules/@patternfly/react-core/dist/styles/base.css</span></span></code></pre>
+<p>These two factors make it difficult to build a keycloak theme with a modern web framework like React, because most build systems require you to know the hosted url before building the app and output static assets along with html files, not freemarker templates. This is where <a href="https://keycloakify.dev/">Keycloakify</a> comes in. It provides a built-in solution for react apps that answers the questions:</p>
+<ol>
+<li>How do I convert my app’s build to the proper set of freemarker templates that provide me access to templating variables in my webapp?</li>
+<li>How do I update asset URIs at runtime to reference the correct url where keycloak hosts them.</li>
+</ol>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="keycloak">Keycloak</h3>
+<p>If you don’t already have a keycloak instance set up, the easiest way to get started is by creating a Dockerfile with the following contents:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#FF7B72">FROM</span><span style="color:#C9D1D9"> quay.io/keycloak/keycloak:latest </span><span style="color:#FF7B72">as</span><span style="color:#C9D1D9"> builder</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">WORKDIR</span><span style="color:#C9D1D9"> /opt/keycloak</span></span>
+<span class="line"><span style="color:#FF7B72">RUN</span><span style="color:#C9D1D9"> /opt/keycloak/bin/kc.sh build</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">FROM</span><span style="color:#C9D1D9"> quay.io/keycloak/keycloak:latest</span></span>
+<span class="line"><span style="color:#FF7B72">COPY</span><span style="color:#C9D1D9"> --from=builder /opt/keycloak/ /opt/keycloak/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">ENV</span><span style="color:#C9D1D9"> KC_HOSTNAME=localhost</span></span>
+<span class="line"><span style="color:#FF7B72">ENTRYPOINT</span><span style="color:#C9D1D9"> [</span><span style="color:#A5D6FF">&quot;/opt/keycloak/bin/kc.sh&quot;</span><span style="color:#C9D1D9">, </span><span style="color:#A5D6FF">&quot;start-dev&quot;</span><span style="color:#C9D1D9">]</span></span></code></pre>
+<p>Next build and run the Docker image:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">docker build -t keycloak-app .</span></span>
+<span class="line"><span style="color:#c9d1d9">docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080 keycloak-app</span></span></code></pre>
+<p>From here, you should be able to access the keycloak admin UI at <code>http://localhost:8080</code> and you should be able to login with username/password <code>admin:admin</code>:</p>
+<img src="/the-ui-dawg-static-site//keycloakify/keycloak-admin.png"/>
+<h3 id="keycloakify">Keycloakify</h3>
+<p>It is possible to setup Keycloakify from scratch but the easiest thing to do is clone the <a href="https://github.com/keycloakify/keycloakify-starter">keycloakify-starter repo</a>:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">git clone https://github.com/keycloakify/keycloakify-starter.git</span></span></code></pre>
+<p>This repo is set up with an app with all the boilerplate you need to get started to develop for a keycloak theme.</p>
+<p>Next run the following to download dependencies and build the keycloak theme:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">yarn install</span></span>
+<span class="line"><span style="color:#c9d1d9">yarn build-keycloak-theme</span></span></code></pre>
+<p>Once finished, you should see a jar file in the <code>build_keycloak/target</code> directory (Something like <code>keycloakify-starter-keycloak-theme-4.4.4.jar</code>).</p>
+<p>This jar file contains a <a href="https://www.keycloak.org/docs/latest/server_development/#_providers">keycloak SPI</a> for use in keycloak. Next we’ll need to configure keycloak to consume this jar.</p>
+<h3 id="integrating-keycloak-and-keycloakify-jar">Integrating Keycloak and Keycloakify Jar</h3>
+<p>To make your theme available within keycloak, you should copy it into keycloak’s <code>/providers</code> directory before building keycloak.</p>
+<p>For a full Dockerfile example:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#FF7B72">FROM</span><span style="color:#C9D1D9"> node:18 </span><span style="color:#FF7B72">as</span><span style="color:#C9D1D9"> keycloakify_jar_builder</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">RUN</span><span style="color:#C9D1D9"> apt-get update &amp;&amp; \</span></span>
+<span class="line"><span style="color:#C9D1D9">    apt-get install -y openjdk-11-jdk &amp;&amp; \</span></span>
+<span class="line"><span style="color:#C9D1D9">    apt-get install -y maven;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">COPY</span><span style="color:#C9D1D9"> ./keycloakify-starter/package.json ./keycloakify-starter/yarn.lock /opt/app/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">WORKDIR</span><span style="color:#C9D1D9"> /opt/app</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">RUN</span><span style="color:#C9D1D9"> yarn install --frozen-lockfile</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">COPY</span><span style="color:#C9D1D9"> ./keycloakify-starter/ /opt/app/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">RUN</span><span style="color:#C9D1D9"> yarn build-keycloak-theme</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">FROM</span><span style="color:#C9D1D9"> quay.io/keycloak/keycloak:latest </span><span style="color:#FF7B72">as</span><span style="color:#C9D1D9"> builder</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">WORKDIR</span><span style="color:#C9D1D9"> /opt/keycloak</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">COPY</span><span style="color:#C9D1D9"> --from=keycloakify_jar_builder /opt/app/build_keycloak/target/keycloakify-starter-keycloak-theme-4.4.4.jar /opt/keycloak/providers/</span></span>
+<span class="line"><span style="color:#FF7B72">RUN</span><span style="color:#C9D1D9"> /opt/keycloak/bin/kc.sh build</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">FROM</span><span style="color:#C9D1D9"> quay.io/keycloak/keycloak:latest</span></span>
+<span class="line"><span style="color:#FF7B72">COPY</span><span style="color:#C9D1D9"> --from=builder /opt/keycloak/ /opt/keycloak/</span></span>
+<span class="line"><span style="color:#FF7B72">ENV</span><span style="color:#C9D1D9"> KC_HOSTNAME=localhost</span></span>
+<span class="line"><span style="color:#FF7B72">ENTRYPOINT</span><span style="color:#C9D1D9"> [</span><span style="color:#A5D6FF">&quot;/opt/keycloak/bin/kc.sh&quot;</span><span style="color:#C9D1D9">, </span><span style="color:#A5D6FF">&quot;start-dev&quot;</span><span style="color:#C9D1D9">]</span></span></code></pre>
+<p>Next build and run the Keycloak server:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">docker build -t keycloak-app .</span></span>
+<span class="line"><span style="color:#c9d1d9">docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080 keycloak-app</span></span></code></pre>
+<p>Once Keycloak is up and running, login to the admin console and navigate to the realm &amp; client you want to apply the theme to.</p>
+<img src="/the-ui-dawg-static-site//keycloakify/ClientsPage.png"/>
+<p>Next, navigate to the client’s login settings (towards the bottom of the page) and select the <code>keycloakify-starter</code> theme. Make sure to click <code>Save</code>.</p>
+<img src="/the-ui-dawg-static-site//keycloakify/login-settings.png"/>
+<p>That’s it! Now if you navigate to your client’s login page, you should be served up the React keycloakify app!</p>
+<img src="/the-ui-dawg-static-site//keycloakify/login.png"/>
+<h2 id="making-changes">Making Changes</h2>
+<h3 id="individual-pages">Individual Pages</h3>
+<p>Each keycloak page has a corresponding <code>.ftl</code> file that is used when rendering the page. The keycloakify starter app sets you up with a
+default set of mappings of <code>.ftl</code> files to React components. At the time of writing these definitions live in the <code>KCApp.tsx</code> file:</p>
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;./KcApp.css&quot;</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#C9D1D9"> { lazy, Suspense } </span><span style="color:#FF7B72">from</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;react&quot;</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#C9D1D9"> Fallback, { </span><span style="color:#FF7B72">type</span><span style="color:#C9D1D9"> PageProps } </span><span style="color:#FF7B72">from</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;keycloakify/login&quot;</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">type</span><span style="color:#C9D1D9"> { KcContext } </span><span style="color:#FF7B72">from</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;./kcContext&quot;</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#C9D1D9"> { useI18n } </span><span style="color:#FF7B72">from</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;./i18n&quot;</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Template</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./Template&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">DefaultTemplate</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;keycloakify/login/Template&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// You can uncomment this to see the values passed by the main app before redirecting.  </span></span>
+<span class="line"><span style="color:#8B949E">//import { foo, bar } from &quot;./valuesTransferredOverUrl&quot;;</span></span>
+<span class="line"><span style="color:#8B949E">//console.log(`Values passed by the main app in the URL parameter:`, { foo, bar });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Login</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./pages/Login&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#8B949E">// If you can, favor register-user-profile.ftl over register.ftl, see: https://docs.keycloakify.dev/realtime-input-validation</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Register</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./pages/Register&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">RegisterUserProfile</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./pages/RegisterUserProfile&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Terms</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./pages/Terms&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">MyExtraPage1</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./pages/MyExtraPage1&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">MyExtraPage2</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;./pages/MyExtraPage2&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Info</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">lazy</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">import</span><span style="color:#C9D1D9">(</span><span style="color:#A5D6FF">&quot;keycloakify/login/pages/Info&quot;</span><span style="color:#C9D1D9">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">// This is like adding classes to theme.properties </span></span>
+<span class="line"><span style="color:#8B949E">// https://github.com/keycloak/keycloak/blob/11.0.3/themes/src/main/resources/theme/keycloak/login/theme.properties</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">classes</span><span style="color:#FF7B72">:</span><span style="color:#C9D1D9"> </span><span style="color:#FFA657">PageProps</span><span style="color:#C9D1D9">&lt;</span><span style="color:#79C0FF">any</span><span style="color:#C9D1D9">, </span><span style="color:#79C0FF">any</span><span style="color:#C9D1D9">&gt;[</span><span style="color:#A5D6FF">&quot;classes&quot;</span><span style="color:#C9D1D9">] </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> {</span></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#8B949E">// NOTE: The classes are defined in ./KcApp.css</span></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#A5D6FF">&quot;kcHtmlClass&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#A5D6FF">&quot;my-root-class&quot;</span><span style="color:#C9D1D9">,</span></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#A5D6FF">&quot;kcHeaderWrapperClass&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#A5D6FF">&quot;my-color my-font&quot;</span></span>
+<span class="line"><span style="color:#C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FFA657"> </span><span style="color:#FF7B72">default</span><span style="color:#FFA657"> </span><span style="color:#FF7B72">function</span><span style="color:#FFA657"> </span><span style="color:#D2A8FF">KcApp</span><span style="color:#FFA657">(props</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> { kcContext</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> KcContext; }) </span><span style="color:#C9D1D9">{</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> { </span><span style="color:#79C0FF">kcContext</span><span style="color:#C9D1D9"> } </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> props;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FF7B72">const</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">i18n</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">=</span><span style="color:#C9D1D9"> </span><span style="color:#D2A8FF">useI18n</span><span style="color:#C9D1D9">({ kcContext });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FF7B72">if</span><span style="color:#C9D1D9"> (i18n </span><span style="color:#FF7B72">===</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">null</span><span style="color:#C9D1D9">) {</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#8B949E">//NOTE: Locales not yet downloaded, we could as well display a loading progress but it&#39;s usually a matter of milliseconds.</span></span>
+<span class="line"><span style="color:#C9D1D9">        </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">null</span><span style="color:#C9D1D9">;</span></span>
+<span class="line"><span style="color:#C9D1D9">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#8B949E">/* </span></span>
+<span class="line"><span style="color:#8B949E">    * Examples assuming i18n.currentLanguageTag === &quot;en&quot;:</span></span>
+<span class="line"><span style="color:#8B949E">    * i18n.msg(&quot;access-denied&quot;) === &lt;span&gt;Access denied&lt;/span&gt;</span></span>
+<span class="line"><span style="color:#8B949E">    * i18n.msg(&quot;foo&quot;) === &lt;span&gt;foo in English&lt;/span&gt;</span></span>
+<span class="line"><span style="color:#8B949E">    */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">    </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> (</span></span>
+<span class="line"><span style="color:#C9D1D9">        &lt;</span><span style="color:#7EE787">Suspense</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">            </span><span style="color:#FF7B72">{</span><span style="color:#C9D1D9">(() </span><span style="color:#FF7B72">=&gt;</span><span style="color:#C9D1D9"> {</span></span>
+<span class="line"><span style="color:#C9D1D9">                </span><span style="color:#FF7B72">switch</span><span style="color:#C9D1D9"> (kcContext.pageId) {</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;login.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">Login</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, Template, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;register.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">Register</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, Template, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;register-user-profile.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">RegisterUserProfile</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, Template, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;terms.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">Terms</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, Template, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;my-extra-page-1.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">MyExtraPage1</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, Template, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;my-extra-page-2.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">MyExtraPage2</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, Template, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#8B949E">// We choose to use the default Template for the Info page and to download the theme resources.</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">case</span><span style="color:#C9D1D9"> </span><span style="color:#A5D6FF">&quot;info.ftl&quot;</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">Info</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Template</span><span style="color:#FF7B72">={</span><span style="color:#C9D1D9">DefaultTemplate</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                    </span><span style="color:#FF7B72">default</span><span style="color:#C9D1D9">: </span><span style="color:#FF7B72">return</span><span style="color:#C9D1D9"> &lt;</span><span style="color:#7EE787">Fallback</span><span style="color:#C9D1D9"> </span><span style="color:#FF7B72">{...</span><span style="color:#C9D1D9">{ kcContext, i18n, classes }</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">Template</span><span style="color:#FF7B72">={</span><span style="color:#C9D1D9">DefaultTemplate</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> </span><span style="color:#79C0FF">doUseDefaultCss</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">true</span><span style="color:#FF7B72">}</span><span style="color:#C9D1D9"> /&gt;;</span></span>
+<span class="line"><span style="color:#C9D1D9">                }</span></span>
+<span class="line"><span style="color:#C9D1D9">            })()</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#C9D1D9">        &lt;/</span><span style="color:#7EE787">Suspense</span><span style="color:#C9D1D9">&gt;</span></span>
+<span class="line"><span style="color:#C9D1D9">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C9D1D9">}</span></span></code></pre>
+<p>If you aren’t sure which <code>pageId</code> you should be using to override the page you want, take a look at the hosted storybook instance to get an idea: <a href="https://storybook.keycloakify.dev">https://storybook.keycloakify.dev</a>.</p>
+<h3 id="other-updates">Other Updates</h3>
+<p>The keycloakify-starter repo sets you up with a <a href="https://create-react-app.dev/">create-react-app</a> that can be easily injected at runtime. You should have access to all the tools you would in any other React app, which gives you a lot of flexibility. During development, it’s recommended to use the storybook instance included in keycloakify-starter by running <code>yarn storybook</code>. Some additional changes you can make:</p>
+<ul>
+<li>Have Keycloak host static assets by putting them in the <code>/public/</code> directory of your app</li>
+<li>Define i18n values that get displayed basd on the user’s configured language</li>
+<li>Access Build Time Variables by prefixing your environment variables with <code>REACT_APP_</code>  and access with <code>process.env.REACT_APP_MY_VAR</code></li>
+<li>Access Runtime Keycloak Environment Variables by adding the following to your app’s <code>package.json</code>:
+<pre class="astro-code" style="background-color:#0d1117;overflow-x:auto"><code><span class="line"><span style="color:#c9d1d9">...</span></span>
+<span class="line"><span style="color:#c9d1d9">&quot;keycloakify: {</span></span>
+<span class="line"><span style="color:#c9d1d9">    &quot;extraThemeProperties&quot;: [&quot;yourCustomProperty=${env.YOUR_VAR:defaultvalue}&quot;]</span></span>
+<span class="line"><span style="color:#c9d1d9">}</span></span></code></pre>
+<ul>
+<li>
+<p>From here you should be able to access your theme property at <code>kcContext.properties.yourCustomProperty</code></p>
+<p>(Note: this relationship is not currently typesafe, so you will get a type error when you try to access your property — this can be ignored)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This was by no means an all-inclusive look at the features of keycloakify, but hopefully this shows you the value that keycloakify adds to your app. For a more holistic view of the features of keycloakify, see their documentation page: <a href="https://docs.keycloakify.dev/">https://docs.keycloakify.dev/</a>. Happy Coding!</p>
+
+        
+  </section>
+  <nav class="block sm:hidden astro-J75B3YUS">
+    <h2 class="heading astro-BYIKQF6W">More</h2>
+<ul class="astro-BYIKQF6W">
+  <li class="header-link depth-2 astro-BYIKQF6W">
+        <a class="edit-on-github astro-BYIKQF6W" href="https://github.com/willwill96/the-ui-dawg-static-site/edit/main/src/content/docs//en/keycloakify.mdx" target="_blank">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen" class="svg-inline--fa fa-pen fa-w-16 astro-BYIKQF6W" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="1em" width="1em">
+            <path fill="currentColor" d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z" class="astro-BYIKQF6W"></path>
+          </svg>
+          <span class="astro-BYIKQF6W">Edit this page</span>
+        </a>
+      </li>
+</ul>
+<div style="margin: 2rem 0; text-align: center;" class="astro-BYIKQF6W">
+  <script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));</script><astro-island uid="g6hLy" component-url="/the-ui-dawg-static-site/_astro/ThemeToggleButton.70ee036c.js" component-export="default" renderer-url="/the-ui-dawg-static-site/_astro/client.8b0578c2.js" props="{&quot;class&quot;:[0,&quot;astro-BYIKQF6W&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle"><label class><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd"></path></svg><input type="radio" name="theme-toggle" value="light" title="Use light theme" aria-label="Use light theme" /></label><label class><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" value="dark" title="Use dark theme" aria-label="Use dark theme" /></label></div></astro-island>
+</div>
+  </nav>
+</article>
+      </div>
+      <aside id="grid-right" class="grid-sidebar astro-OUAMJN2I" title="Table of Contents">
+        <nav class="sidebar-nav astro-ROIVMLUZ" aria-labelledby="grid-right">
+  <div class="sidebar-nav-inner astro-ROIVMLUZ">
+    <astro-island uid="2lSlcC" component-url="/the-ui-dawg-static-site/_astro/TableOfContents.4ec541fb.js" component-export="default" renderer-url="/the-ui-dawg-static-site/_astro/client.8b0578c2.js" props="{&quot;headings&quot;:[1,&quot;[[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;what-is-keycloak\&quot;],\&quot;text\&quot;:[0,\&quot;What is Keycloak?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;what-is-keycloakify-solving\&quot;],\&quot;text\&quot;:[0,\&quot;What is Keycloakify solving?\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;getting-started\&quot;],\&quot;text\&quot;:[0,\&quot;Getting Started\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;keycloak\&quot;],\&quot;text\&quot;:[0,\&quot;Keycloak\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;keycloakify\&quot;],\&quot;text\&quot;:[0,\&quot;Keycloakify\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;integrating-keycloak-and-keycloakify-jar\&quot;],\&quot;text\&quot;:[0,\&quot;Integrating Keycloak and Keycloakify Jar\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;making-changes\&quot;],\&quot;text\&quot;:[0,\&quot;Making Changes\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;individual-pages\&quot;],\&quot;text\&quot;:[0,\&quot;Individual Pages\&quot;]}],[0,{\&quot;depth\&quot;:[0,3],\&quot;slug\&quot;:[0,\&quot;other-updates\&quot;],\&quot;text\&quot;:[0,\&quot;Other Updates\&quot;]}],[0,{\&quot;depth\&quot;:[0,2],\&quot;slug\&quot;:[0,\&quot;conclusion\&quot;],\&quot;text\&quot;:[0,\&quot;Conclusion\&quot;]}]]&quot;],&quot;class&quot;:[0,&quot;astro-ROIVMLUZ&quot;]}" ssr="" client="media" opts="{&quot;name&quot;:&quot;TableOfContents&quot;,&quot;value&quot;:&quot;(min-width: 50em)&quot;}" await-children=""><h2 id="on-this-page-heading" class="heading">On this page</h2><ul><li class="header-link depth-2"><a href="#what-is-keycloak">What is Keycloak?</a></li><li class="header-link depth-2"><a href="#what-is-keycloakify-solving">What is Keycloakify solving?</a></li><li class="header-link depth-2"><a href="#getting-started">Getting Started</a></li><li class="header-link depth-3"><a href="#keycloak">Keycloak</a></li><li class="header-link depth-3"><a href="#keycloakify">Keycloakify</a></li><li class="header-link depth-3"><a href="#integrating-keycloak-and-keycloakify-jar">Integrating Keycloak and Keycloakify Jar</a></li><li class="header-link depth-2"><a href="#making-changes">Making Changes</a></li><li class="header-link depth-3"><a href="#individual-pages">Individual Pages</a></li><li class="header-link depth-3"><a href="#other-updates">Other Updates</a></li><li class="header-link depth-2"><a href="#conclusion">Conclusion</a></li></ul></astro-island>
+    <h2 class="heading astro-BYIKQF6W">More</h2>
+<ul class="astro-BYIKQF6W">
+  <li class="header-link depth-2 astro-BYIKQF6W">
+        <a class="edit-on-github astro-BYIKQF6W" href="https://github.com/willwill96/the-ui-dawg-static-site/edit/main/src/content/docs//en/keycloakify.mdx" target="_blank">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen" class="svg-inline--fa fa-pen fa-w-16 astro-BYIKQF6W" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="1em" width="1em">
+            <path fill="currentColor" d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z" class="astro-BYIKQF6W"></path>
+          </svg>
+          <span class="astro-BYIKQF6W">Edit this page</span>
+        </a>
+      </li>
+</ul>
+<div style="margin: 2rem 0; text-align: center;" class="astro-BYIKQF6W">
+  <astro-island uid="g6hLy" component-url="/the-ui-dawg-static-site/_astro/ThemeToggleButton.70ee036c.js" component-export="default" renderer-url="/the-ui-dawg-static-site/_astro/client.8b0578c2.js" props="{&quot;class&quot;:[0,&quot;astro-BYIKQF6W&quot;]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;ThemeToggleButton&quot;,&quot;value&quot;:true}" await-children=""><div class="theme-toggle"><label class><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd"></path></svg><input type="radio" name="theme-toggle" value="light" title="Use light theme" aria-label="Use light theme" /></label><label class><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><input type="radio" name="theme-toggle" value="dark" title="Use dark theme" aria-label="Use dark theme" /></label></div></astro-island>
+</div>
+  </div>
+</nav>
+      </aside>
+    </main>
+    <footer class="astro-AK3UPACL">
+  <div class="contributors astro-QVDSTM4S">
+  <ul class="avatar-list astro-QVDSTM4S" style="--avatar-count: 1">
+    <li class="astro-QVDSTM4S">
+          <a href="https://github.com/willwill96" class="astro-QVDSTM4S">
+            <img alt="Contributor willwill96" title="Contributor willwill96" width="64" height="64" src="https://avatars.githubusercontent.com/u/10997562" class="astro-QVDSTM4S">
+          </a>
+        </li>
+  </ul>
+  
+  
+</div>
+</footer>
+  </body></html>
