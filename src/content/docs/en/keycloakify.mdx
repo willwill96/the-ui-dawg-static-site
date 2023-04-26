@@ -4,7 +4,7 @@ description: "How to Integrate Keycloakify with Keycloak"
 ---
 import { convertToBaseUrl } from "../../../utils/base-url";
 
-<img src={convertToBaseUrl("keycloakify/Keycloakify.png")} />
+<img src={convertToBaseUrl("keycloakify/keycloakify.png")} />
 
 ## What is Keycloak?
 
@@ -246,7 +246,16 @@ The keycloakify-starter repo sets you up with a [create-react-app](https://creat
 - Have Keycloak host static assets by putting them in the `/public/` directory of your app
 - Define i18n values that get displayed basd on the user's configured language
 - Access Build Time Variables by prefixing your environment variables with `REACT_APP_`  and access with `process.env.REACT_APP_MY_VAR`
-- Access Runtime Keycloak Environment Variables by adding a `keycloakify.extraThemeProperties`
+- Access Runtime Keycloak Environment Variables by adding the following to your app's `package.json`:
+    ```
+    ...
+    "keycloakify: {
+        "extraThemeProperties": ["yourCustomProperty=${env.YOUR_VAR:defaultvalue}"]
+    }
+    ```
+    - From here you should be able to access your theme property at `kcContext.properties.yourCustomProperty`
+    
+        (Note: this relationship is not currently typesafe, so you will get a type error when you try to access your property -- this can be ignored)
 
 ## Conclusion
 
