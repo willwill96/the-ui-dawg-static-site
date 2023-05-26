@@ -42,6 +42,10 @@ export const SIDEBAR: Sidebar = {
     ],
     "Blog Posts": [
       {
+        text: "End to End Testing NPM Packages with Verdaccio",
+        link: `${import.meta.env.BASE_URL}en/verdaccio`,
+      },
+      {
         text: "Extending Keycloak Themes with Keycloakify",
         link: `${import.meta.env.BASE_URL}en/keycloakify`,
       },

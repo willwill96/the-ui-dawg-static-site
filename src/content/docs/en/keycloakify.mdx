@@ -2,6 +2,7 @@
 title: "Extending Keycloak Themes with Keycloakify"
 description: "How to Integrate Keycloakify with Keycloak"
 ---
+
 import { convertToBaseUrl } from "../../../utils/base-url";
 
 <img src={convertToBaseUrl("keycloakify/keycloakify.png")} />
@@ -15,7 +16,9 @@ I won't be going too in depth into keycloak itself, as I want to stay focused on
 ## What is Keycloakify solving?
 
 To answer this question requires a bit of context as to how keycloak themes work internally. You can find more information on keycloak theming [at their docs page](https://www.keycloak.org/docs/latest/server_development/#_themes). There are two important pieces in my opinion though:
+
 1. Themes are defined in a file format called freemarker template (`.ftl`). An example of one of the built-in theme pages looks like this (`info.ftl`):
+
 ```html
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=false; section>
@@ -44,21 +47,22 @@ To answer this question requires a bit of context as to how keycloak themes work
 ```
 
 2. Keycloak supports hosting asset files (ex images, javascript, css), but its approach involves hosting the assets at a hashed url that is unknown until the keycloak container has been built. For example a url for a static asset might look like the following (Note the hashed value in the second part of the url):
+
 ```
 GET /resources/3czkt/common/keycloak/web_modules/@patternfly/react-core/dist/styles/base.css
 ```
 
 These two factors make it difficult to build a keycloak theme with a modern web framework like React, because most build systems require you to know the hosted url before building the app and output static assets along with html files, not freemarker templates. This is where [Keycloakify](https://keycloakify.dev/) comes in. It provides a built-in solution for react apps that answers the questions:
+
 1. How do I convert my app's build to the proper set of freemarker templates that provide me access to templating variables in my webapp?
 2. How do I update asset URIs at runtime to reference the correct url where keycloak hosts them?
 
-
 ## Getting Started
-
 
 ### Keycloak
 
 If you don't already have a keycloak instance set up, the easiest way to get started is by creating a Dockerfile with the following contents:
+
 ```docker
 FROM quay.io/keycloak/keycloak:latest as builder
 
@@ -73,6 +77,7 @@ ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
 ```
 
 Next build and run the Docker image:
+
 ```
 docker build -t keycloak-app .
 docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080 keycloak-app
@@ -81,7 +86,6 @@ docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080
 From here, you should be able to access the keycloak admin UI at `http://localhost:8080` and you should be able to login with username/password `admin:admin`:
 
 <img src={convertToBaseUrl("keycloakify/keycloak-admin.png")} />
-
 
 ### Keycloakify
 
@@ -142,6 +146,7 @@ ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
 ```
 
 Next build and run the Keycloak server:
+
 ```
 docker build -t keycloak-app .
 docker run -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -p 8080:8080 keycloak-app
@@ -151,11 +156,9 @@ Once Keycloak is up and running, login to the admin console and navigate to the 
 
 <img src={convertToBaseUrl("keycloakify/ClientsPage.png")} />
 
-
 Next, navigate to the client's login settings (towards the bottom of the page) and select the `keycloakify-starter` theme. Make sure to click `Save`.
 
 <img src={convertToBaseUrl("keycloakify/login-settings.png")} />
-
 
 That's it! Now if you navigate to your client's login page, you should be served up the React keycloakify app!
 
@@ -178,7 +181,7 @@ import { useI18n } from "./i18n";
 const Template = lazy(() => import("./Template"));
 const DefaultTemplate = lazy(() => import("keycloakify/login/Template"));
 
-// You can uncomment this to see the values passed by the main app before redirecting.  
+// You can uncomment this to see the values passed by the main app before redirecting.
 //import { foo, bar } from "./valuesTransferredOverUrl";
 //console.log(`Values passed by the main app in the URL parameter:`, { foo, bar });
 
@@ -191,49 +194,97 @@ const MyExtraPage1 = lazy(() => import("./pages/MyExtraPage1"));
 const MyExtraPage2 = lazy(() => import("./pages/MyExtraPage2"));
 const Info = lazy(() => import("keycloakify/login/pages/Info"));
 
-// This is like adding classes to theme.properties 
+// This is like adding classes to theme.properties
 // https://github.com/keycloak/keycloak/blob/11.0.3/themes/src/main/resources/theme/keycloak/login/theme.properties
 const classes: PageProps<any, any>["classes"] = {
-    // NOTE: The classes are defined in ./KcApp.css
-    "kcHtmlClass": "my-root-class",
-    "kcHeaderWrapperClass": "my-color my-font"
+  // NOTE: The classes are defined in ./KcApp.css
+  kcHtmlClass: "my-root-class",
+  kcHeaderWrapperClass: "my-color my-font",
 };
 
-export default function KcApp(props: { kcContext: KcContext; }) {
+export default function KcApp(props: { kcContext: KcContext }) {
+  const { kcContext } = props;
 
-    const { kcContext } = props;
+  const i18n = useI18n({ kcContext });
 
-    const i18n = useI18n({ kcContext });
+  if (i18n === null) {
+    //NOTE: Locales not yet downloaded, we could as well display a loading progress but it's usually a matter of milliseconds.
+    return null;
+  }
 
-    if (i18n === null) {
-        //NOTE: Locales not yet downloaded, we could as well display a loading progress but it's usually a matter of milliseconds.
-        return null;
-    }
+  /*
+   * Examples assuming i18n.currentLanguageTag === "en":
+   * i18n.msg("access-denied") === <span>Access denied</span>
+   * i18n.msg("foo") === <span>foo in English</span>
+   */
 
-    /* 
-    * Examples assuming i18n.currentLanguageTag === "en":
-    * i18n.msg("access-denied") === <span>Access denied</span>
-    * i18n.msg("foo") === <span>foo in English</span>
-    */
-
-    return (
-        <Suspense>
-            {(() => {
-                switch (kcContext.pageId) {
-                    case "login.ftl": return <Login {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
-                    case "register.ftl": return <Register {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
-                    case "register-user-profile.ftl": return <RegisterUserProfile {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />
-                    case "terms.ftl": return <Terms {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
-                    case "my-extra-page-1.ftl": return <MyExtraPage1 {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
-                    case "my-extra-page-2.ftl": return <MyExtraPage2 {...{ kcContext, i18n, Template, classes }} doUseDefaultCss={true} />;
-                    // We choose to use the default Template for the Info page and to download the theme resources.
-                    case "info.ftl": return <Info {...{ kcContext, i18n, classes }} Template={DefaultTemplate} doUseDefaultCss={true} />;
-                    default: return <Fallback {...{ kcContext, i18n, classes }} Template={DefaultTemplate} doUseDefaultCss={true} />;
-                }
-            })()}
-        </Suspense>
-    );
-
+  return (
+    <Suspense>
+      {(() => {
+        switch (kcContext.pageId) {
+          case "login.ftl":
+            return (
+              <Login
+                {...{ kcContext, i18n, Template, classes }}
+                doUseDefaultCss={true}
+              />
+            );
+          case "register.ftl":
+            return (
+              <Register
+                {...{ kcContext, i18n, Template, classes }}
+                doUseDefaultCss={true}
+              />
+            );
+          case "register-user-profile.ftl":
+            return (
+              <RegisterUserProfile
+                {...{ kcContext, i18n, Template, classes }}
+                doUseDefaultCss={true}
+              />
+            );
+          case "terms.ftl":
+            return (
+              <Terms
+                {...{ kcContext, i18n, Template, classes }}
+                doUseDefaultCss={true}
+              />
+            );
+          case "my-extra-page-1.ftl":
+            return (
+              <MyExtraPage1
+                {...{ kcContext, i18n, Template, classes }}
+                doUseDefaultCss={true}
+              />
+            );
+          case "my-extra-page-2.ftl":
+            return (
+              <MyExtraPage2
+                {...{ kcContext, i18n, Template, classes }}
+                doUseDefaultCss={true}
+              />
+            );
+          // We choose to use the default Template for the Info page and to download the theme resources.
+          case "info.ftl":
+            return (
+              <Info
+                {...{ kcContext, i18n, classes }}
+                Template={DefaultTemplate}
+                doUseDefaultCss={true}
+              />
+            );
+          default:
+            return (
+              <Fallback
+                {...{ kcContext, i18n, classes }}
+                Template={DefaultTemplate}
+                doUseDefaultCss={true}
+              />
+            );
+        }
+      })()}
+    </Suspense>
+  );
 }
 ```
 
@@ -245,17 +296,17 @@ The keycloakify-starter repo sets you up with a [create-react-app](https://creat
 
 - Have Keycloak host static assets by putting them in the `/public/` directory of your app
 - Define i18n values that get displayed basd on the user's configured language
-- Access Build Time Variables by prefixing your environment variables with `REACT_APP_`  and access with `process.env.REACT_APP_MY_VAR`
+- Access Build Time Variables by prefixing your environment variables with `REACT_APP_` and access with `process.env.REACT_APP_MY_VAR`
 - Access Runtime Keycloak Environment Variables by adding the following to your app's `package.json`:
-    ```
-    ...
-    "keycloakify: {
-        "extraThemeProperties": ["yourCustomProperty=${env.YOUR_VAR:defaultvalue}"]
-    }
-    ```
-    - From here you should be able to access your theme property at `kcContext.properties.yourCustomProperty`
-    
-        (Note: this relationship is not currently typesafe, so you will get a type error when you try to access your property -- this can be ignored)
+  ```
+  ...
+  "keycloakify: {
+      "extraThemeProperties": ["yourCustomProperty=${env.YOUR_VAR:defaultvalue}"]
+  }
+  ```
+  - From here you should be able to access your theme property at `kcContext.properties.yourCustomProperty`
+
+    (Note: this relationship is not currently typesafe, so you will get a type error when you try to access your property -- this can be ignored)
 
 ## Conclusion
 
