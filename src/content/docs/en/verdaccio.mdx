@@ -5,11 +5,11 @@ description: "e2e testing with Verdaccio"
 
 import { convertToBaseUrl } from "../../../utils/base-url";
 
-If you've been developing npm packages for a while, and use build tools like typescript before publishing to an npm registry, you probably know that sometimes your packages behave differently after being built.
+If you've been developing npm packages for a while and use build tools like typescript, you probably know that sometimes your packages behave after differently after being built. Whether it's due to some magic the typescript compiler is doing, differences between esm and commonjs or something else entirely, it's extremely frustrating to publish a package only to find that it's broken.
 
 There are tools available like `npm/yarn/pnpm link` and [yalc](https://github.com/wclr/yalc) to help simuate publishing packages in your local environment, but these tools have their own limitations that may make your code behave differently than when published to an npm registry.
 
-For example, most `link` commands have some shortcomings related to symlinks. And yalc has it's own lock file as opposed to integrating directly with your package manager. Wouldn't it be nice if you could truly end-to-end test your npm packages? You can with a service like Verdaccio!
+For example, most `link` commands have some shortcomings related to symlinks. And yalc has it's own lock file as opposed to integrating directly with your package manager. Wouldn't it be nice if you could truly end-to-end test your npm packages? This is where Verdaccio comes in.
 
 ## Verdaccio
 
