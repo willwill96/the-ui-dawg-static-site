@@ -6,7 +6,7 @@ export const SITE = {
 
 export const OPEN_GRAPH = {
   image: {
-    src: "https://github.com/willwill96/the-ui-dawg-static-site/blob/main/public/logo.png",
+    src: "https://github.com/willwill96/the-ui-dawg-static-site/blob/main/public/logo.png?raw=true",
     alt:
       "The UI Dawg Site Logo"
   },
