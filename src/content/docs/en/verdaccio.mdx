@@ -321,6 +321,9 @@ jobs:
 
 ## Closing Thoughts
 
+
+Before implementing this for every one of your projects, take a while to think about whether you actually need it. Verdaccio is a very helpful tool, but it admittedly adds complexity that's not necessary for every project. Have you run into problems that can't be debugged without first having the package published? If you aren't, it might not be time to adopt Verdaccio yet.
+
 While this setup may not be necessary for every project, I think that Verdaccio provides a superior service to alternatives like `npm link` & `yalc`, due to simulateneously being a full-fledged npm registry as well and providing an ephemeral environment that can be recreated simply with a docker image. I hope this article was useful for you in getting started with e2e testing npm packages. Happy Coding!
 
 The full source code for the Verdaccio PoC can be found here: https://github.com/willwill96/verdaccio-e2e-testing
