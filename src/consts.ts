@@ -6,10 +6,9 @@ export const SITE = {
 
 export const OPEN_GRAPH = {
   image: {
-    src: "https://github.com/withastro/astro/blob/main/.github/assets/banner.png?raw=true",
+    src: "https://github.com/willwill96/the-ui-dawg-static-site/blob/main/public/logo.png",
     alt:
-      "astro logo on a starry expanse of space," +
-      " with a purple saturn-like planet floating in the right foreground",
+      "The UI Dawg Site Logo"
   },
   twitter: "astrodotbuild",
 };
