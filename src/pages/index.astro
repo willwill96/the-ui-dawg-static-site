@@ -2,7 +2,7 @@
 const isCFPages = !!import.meta.env.CF_PAGES
 const pathName = `${isCFPages ? "" : "/the-ui-dawg-static-site"}/en/introduction`
 ---
-<script is:inline>
+<script is:inline define:vars={{ pathName }}>
   // Redirect your homepage to the first page of documentation.
   // If you have a landing page, remove this script an`d add it here!
   window.location.pathname = pathName;
