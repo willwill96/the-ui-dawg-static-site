@@ -2,7 +2,7 @@ export const convertToBaseUrl = (value: string) => {
   if (import.meta.env.BASE_URL) {
     return `${import.meta.env.BASE_URL}/${value}`;
   }
-  return `/${value}`;
+  return `${value}`;
 };
 
 export const removeBaseUrl = (value: string) => {
