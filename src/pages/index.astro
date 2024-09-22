@@ -1,5 +1,9 @@
+---
+const isCFPages = !!import.meta.env.CF_PAGES
+---
+
 <script is:inline>
   // Redirect your homepage to the first page of documentation.
   // If you have a landing page, remove this script and add it here!
-  window.location.pathname = `/the-ui-dawg-static-site/en/introduction`;
+  window.location.pathname = `/{isCFPages ? "" : "the-ui-dawg-static-site/"}en/introduction`;
 </script>
