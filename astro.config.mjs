@@ -5,10 +5,10 @@ import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 
 
-const isCFPages = !!import.meta.env.CF_PAGES
+const isCFPages = !!process.env.CF_PAGES
 
 
-const site = isCFPages ? import.meta.env.CF_PAGES_URL : `https://willwill96.github.io`
+const site = isCFPages ? process.env.CF_PAGES_URL : `https://willwill96.github.io`
 const base = isCFPages ? '/'  : `/the-ui-dawg-static-site`
 
 // https://astro.build/config
