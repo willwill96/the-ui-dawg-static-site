@@ -4,6 +4,10 @@ import react from "@astrojs/react";
 
 import mdx from "@astrojs/mdx";
 
+
+const site = import.meta.env.APP_SITE_URL || `https://willwill96.github.io`
+const base = import.meta.env.APP_BASE_URL || `/the-ui-dawg-static-site`
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -13,6 +17,6 @@ export default defineConfig({
     react(),
     mdx(),
   ],
-  site: `https://willwill96.github.io`,
-  base: `/the-ui-dawg-static-site`,
+  site,
+  base,
 });
