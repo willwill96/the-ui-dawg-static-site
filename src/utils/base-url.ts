@@ -2,7 +2,7 @@ export const convertToBaseUrl = (value: string) => {
   const baseUrl = import.meta.env.BASE_URL
   if (baseUrl) {
     if (baseUrl === '/') {
-      return value
+      return `/${value}`
     }
     return `${import.meta.env.BASE_URL}/${value}`;
   }
