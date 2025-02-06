@@ -1,9 +1,5 @@
 export const convertToBaseUrl = (value: string) => {
-  const baseUrl = import.meta.env.BASE_URL
-  if (baseUrl) {
-    if (baseUrl === '/') {
-      return `/${value}`
-    }
+  if (import.meta.env.BASE_URL) {
     return `${import.meta.env.BASE_URL}/${value}`;
   }
   return `/${value}`;

@@ -14,17 +14,9 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"docs">;
 
 const post = Astro.props;
-let Content, headings, redirectUrl;
-if (import.meta.env.CF_PAGES || !import.meta.env.PROD) {
-  const postRender = await post.render();
-  Content = postRender.Content
-  headings = postRender.headings
-} else {
-  redirectUrl = `https://the-ui-dawg-static-site.pages.dev/${post.slug}`
-}
-
+const { Content, headings } = await post.render();
 ---
-{redirectUrl && <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />}
-{!redirectUrl && <MainLayout headings={headings} {...post.data}>
+
+<MainLayout headings={headings} {...post.data}>
   <Content />
-</MainLayout>}
+</MainLayout>

@@ -4,13 +4,6 @@ import react from "@astrojs/react";
 
 import mdx from "@astrojs/mdx";
 
-
-const isCFPages = !!process.env.CF_PAGES
-
-
-const site = isCFPages ? process.env.CF_PAGES_URL : `https://willwill96.github.io`
-const base = isCFPages ? '/'  : `/the-ui-dawg-static-site`
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -20,6 +13,6 @@ export default defineConfig({
     react(),
     mdx(),
   ],
-  site,
-  base,
+  site: `https://willwill96.github.io`,
+  base: `/the-ui-dawg-static-site`,
 });
